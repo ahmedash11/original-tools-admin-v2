@@ -79,8 +79,8 @@ export class GenericListComponent implements OnInit, OnDestroy {
     //     )
     //     .subscribe((res) => console.log(res));
     // } else {
-      // single fetch mode
-      this.loadList();
+    // single fetch mode
+    this.loadList();
     // }
     // force refresh triggered from other components
     // this.refreshListner = this._crudService.forceRefreshValue.subscribe(
@@ -109,22 +109,24 @@ export class GenericListComponent implements OnInit, OnDestroy {
   sendSearch(value) {
     this.loader = false;
     let query: any = {};
-    query['searchFields'] = [];
-    query['searchTerm'] = value;
+    // query['searchFields'] = [];
+    // query['searchTerm'] = value;
     this.modelData.list.forEach((listItem) => {
       if (listItem.search) {
         if (isNaN(value) && listItem.type === 'string') {
-          query['searchFields'].push(listItem.searchKey);
+          query[listItem.searchKey] = {
+            like: value + '%'
+          };
         } else if (!isNaN(value) && listItem.key === 'id') {
           query[listItem.searchKey] = +value;
         }
       }
     });
-    query['searchFields'] = query['searchFields'].join(',');
+    // query['searchFields'] = query['searchFields'].join(',');
     if (+value === 0) {
       return this.loadList();
     }
-    this.loadList(query);
+    this.loadList({ where: query });
   }
 
   delete(data: any) {
@@ -196,8 +198,11 @@ export class GenericListComponent implements OnInit, OnDestroy {
 
     return this._crudService
       .getData(this.gate, query)
-      .then((res) => {
-        this.totalLength = res.count;
+      .then(async (res) => {
+        this.totalLength = (
+          await this._crudService.getCount(this.gate, query)
+        ).count;
+        console.log({ gate: this.gate, length: this.totalLength });
         this.listData = res.data || res.results || res;
         console.log(this.listData);
 

@@ -12,8 +12,7 @@ import {
 } from '../../_base/crud';
 import { Router } from '@angular/router';
 
-const API_USERS_URL = 'https://reqres.in/api/users/1';
-const API_REGISTER = 'https://reqres.in/api/register';
+const API_USERS_URL = 'api/users';
 const API_PERMISSION_URL = 'api/permissions';
 const API_ROLES_URL = 'api/roles';
 
@@ -22,7 +21,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   // Authentication/Authorization
   login(email: string, password: string): Observable<User> {
-    return this.http.post<User>(API_USERS_URL, { email, password });
+    return this.http.post<User>(API_USERS_URL + '/login', {
+      email,
+      password
+    });
   }
 
   getUserByToken(): Observable<User> {
@@ -38,7 +40,7 @@ export class AuthService {
     const httpHeaders = new HttpHeaders();
     httpHeaders.set('Content-Type', 'application/json');
     return this.http
-      .post<User>(API_REGISTER, user, { headers: httpHeaders })
+      .post<User>(API_USERS_URL, user, { headers: httpHeaders })
       .toPromise();
   }
 

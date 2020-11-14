@@ -34,23 +34,29 @@ export class MenuConfig {
       self: {},
       items: [
         {
-          title: 'Posts',
-          icon: 'fas fa-tasks',
+          title: 'Brands',
+          icon: 'fas fa-copyright',
           bullet: 'line',
-          page: '/posts'
+          page: '/brands'
         },
         {
-          title: 'Albums',
-          icon: 'fas fa-images',
+          title: 'Categories',
+          icon: 'fas fa-stream',
           bullet: 'line',
-          page: '/albums'
+          page: '/categories'
         },
         {
-          title: 'Users Managment',
-          icon: 'fa fa-users',
+          title: 'Products',
+          icon: 'fas fa-tools',
           bullet: 'line',
-          page: '/users'
-        }
+          page: '/products'
+        },
+        // {
+        //   title: 'Users Managment',
+        //   icon: 'fa fa-users',
+        //   bullet: 'line',
+        //   page: '/users'
+        // }
       ]
     }
   };

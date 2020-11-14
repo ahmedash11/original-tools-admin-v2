@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CRUDService {
-  public url: string = 'https://jsonplaceholder.typicode.com/';
+  public url: string = '/api/';
   public genericListFlagSubject = new BehaviorSubject(false);
   public forceRefreshValue = this.genericListFlagSubject.asObservable();
 
@@ -18,8 +18,23 @@ export class CRUDService {
   getData(gate, query): Promise<any> {
     let params = new HttpParams();
     let requestUrl = this.url + gate;
+    query = {
+      filter: JSON.stringify(query)
+    };
     for (let index in query) {
       params = params.set(index, query[index]);
+    }
+    return this.http.get(requestUrl, { params: params }).toPromise();
+  }
+
+  getCount(gate, query): Promise<any> {
+    let params = new HttpParams();
+    let requestUrl = this.url + gate + '/count';
+    delete query.skip;
+    delete query.limit;
+
+    for (let index in query) {
+      params = params.set(index, JSON.stringify(query[index]));
     }
     return this.http.get(requestUrl, { params: params }).toPromise();
   }
@@ -27,6 +42,9 @@ export class CRUDService {
   getOne(gate, ID, query = {}): Promise<any> {
     let params = new HttpParams();
     let requestUrl = this.url + gate;
+    query = {
+      filter: JSON.stringify(query)
+    };
     for (let index in query) {
       params = params.set(index, query[index]);
     }
@@ -115,29 +133,5 @@ export class CRUDService {
         headers: {}
       })
       .toPromise();
-  }
-
-  public downloadInvoice(orderID) {
-    return this.http
-      .get(`/api/orderrequests/${orderID}/invoice`, {
-        responseType: 'blob',
-        params: {}
-      })
-      .toPromise()
-      .then((response) => {
-        const blob = new Blob([response], {
-          type: 'application/pdf'
-        });
-        const url = window.URL.createObjectURL(blob);
-        const pwa = window.open(url);
-        const downloadLink = document.createElement('a');
-        downloadLink.href = url;
-        downloadLink.setAttribute(
-          'download',
-          `order_#${orderID}_invoice.pdf`
-        );
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-      });
   }
 }

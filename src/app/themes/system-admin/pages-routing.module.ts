@@ -6,7 +6,7 @@ import { BaseComponent } from './base/base.component';
 import { ErrorPageComponent } from './content/error-page/error-page.component';
 // Auth
 import { AuthGuard } from '../../services/auth.guard';
-//Admin
+// Admin
 import { AdminGuard } from '../../services/admin.guard';
 // Other imports
 import { HomepageComponent } from '../../pages/homepage/homepage.component';
@@ -36,12 +36,24 @@ const routes: Routes = [
         loadChildren: '../../posts/posts.module#PostsModule'
       },
       {
+        path: 'brands',
+        loadChildren: '../../brands/brands.module#BrandsModule'
+      },
+      {
+        path: 'categories',
+        loadChildren: '../../categories/categories.module#CategoriesModule'
+      },
+      {
+        path: 'products',
+        loadChildren: '../../products/products.module#ProductsModule'
+      },
+      {
         path: 'users',
         loadChildren: '../../users/users.module#UsersModule',
         canActivate: [AdminGuard]
       },
       { path: 'error/:type', component: ErrorPageComponent },
-      { path: '', redirectTo: 'posts', pathMatch: 'full' },
+      { path: '', redirectTo: 'brands', pathMatch: 'full' },
       { path: '**', component: NotFoundComponent, pathMatch: 'full' }
     ]
   }

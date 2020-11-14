@@ -1,0 +1,9 @@
+<kt-portlet>
+  <kt-generic-list
+    *ngIf="brandsModel"
+    [modelData]="brandsModel"
+    [query]="brandsQuery"
+    [title]="'Brand'"
+    [gate]="brandsAPI"
+  ></kt-generic-list>
+</kt-portlet>

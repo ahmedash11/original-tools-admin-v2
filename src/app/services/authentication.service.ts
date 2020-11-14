@@ -15,7 +15,7 @@ export class AuthenticationService {
   token: string;
   tokenKey: string = 'x-access-token';
   currentUserKey: string = 'x-current-user';
-  loginUrl: string = 'https://reqres.in/api/login';
+  loginUrl: string = 'api/users/login';
 
   constructor(
     private router: Router,
@@ -61,9 +61,9 @@ export class AuthenticationService {
 
   login(user) {
     this.setToken(user.token);
-    if (user.auth.email === 'george.bluth@reqres.in') {
-      user.auth.isAdmin = true;
-    }
+    // if (user.auth.email === 'george.bluth@reqres.in') {
+    //   user.auth.isAdmin = true;
+    // }
     this.setCurrentUser(user);
     this.currentUserService.setUser(this.getCurrentUser());
   }

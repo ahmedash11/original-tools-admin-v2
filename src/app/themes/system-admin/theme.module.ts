@@ -40,6 +40,9 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { PagesModule } from '../../pages/pages.module';
 import { AlbumsModule } from '../../albums/albums.module';
 import { PostsModule } from '../../posts/posts.module';
+import { BrandsModule } from '../../brands/brands.module';
+import { CategoriesModule } from '../../categories/categories.module';
+import { ProductsModule } from '../../products/products.module';
 import { HtmlClassService } from './html-class.service';
 import { HeaderMobileComponent } from './header/header-mobile/header-mobile.component';
 import { ErrorPageComponent } from './content/error-page/error-page.component';
@@ -121,6 +124,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LoadingBarModule,
     AlbumsModule,
     PostsModule,
+    BrandsModule,
+    CategoriesModule,
+    ProductsModule,
     NgxDaterangepickerMd,
     InlineSVGModule
   ]
