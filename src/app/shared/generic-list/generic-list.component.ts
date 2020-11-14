@@ -142,35 +142,35 @@ export class GenericListComponent implements OnInit, OnDestroy {
       _waitDesciption
     );
     dialogRef.afterClosed().subscribe((res) => {
-      console.log('TCL: GenericListComponent -> delete -> res', res);
-      if (!res) {
-        return;
-      }
-      this.listChanged.emit(true);
-      this.listData = this.listData.filter(
-        (item) => item['id'] !== data.id
-      );
-      this.changeDetectorRefs.detectChanges();
-      this.layoutUtilsService.showActionNotification(_deleteMessage);
+      // console.log('TCL: GenericListComponent -> delete -> res', res);
+      // if (!res) {
+      //   return;
+      // }
+      // this.listChanged.emit(true);
+      // this.listData = this.listData.filter(
+      //   (item) => item['id'] !== data.id
+      // );
+      // this.changeDetectorRefs.detectChanges();
+      // this.layoutUtilsService.showActionNotification(_deleteMessage);
 
-      // this._crudService
-      //   .deleteData(this.gate, q)
-      //   .then((deleteRes) => {
-      //     this.listChanged.emit(true);
-      //     this.layoutUtilsService.showActionNotification(
-      //       _deleteMessage
-      //     );
-      //     this.loadList().then(() => {
-      //       this.changeDetectorRefs.detectChanges();
-      //     });
-      //   })
-      //   .catch((err) => {
-      //     this.layoutUtilsService.showActionNotification(
-      //       `Failed to delete ${this.title}`,
-      //       MessageType.Delete
-      //     );
-      //     console.error(err);
-      //   });
+      this._crudService
+        .deleteData(this.gate, q)
+        .then((deleteRes) => {
+          this.listChanged.emit(true);
+          this.layoutUtilsService.showActionNotification(
+            _deleteMessage
+          );
+          this.loadList().then(() => {
+            this.changeDetectorRefs.detectChanges();
+          });
+        })
+        .catch((err) => {
+          this.layoutUtilsService.showActionNotification(
+            `Failed to delete ${this.title}`,
+            MessageType.Delete
+          );
+          console.error(err);
+        });
     });
   }
 

@@ -56,6 +56,9 @@ export class CRUDService {
   deleteData(gate, query): Promise<any> {
     let params = new HttpParams();
     let requestUrl = this.url + gate;
+    query = {
+      where: JSON.stringify(query)
+    };
     for (let index in query) {
       params = params.set(index, query[index]);
     }

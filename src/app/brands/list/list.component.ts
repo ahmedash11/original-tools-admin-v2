@@ -16,7 +16,6 @@ export class ListComponent implements OnInit {
 
   public brandsModel: any = {
     form: {
-      wrapperKey: 'brands',
       type: 'special',
       endPoint: 'api/brands',
       httpMethod: 'POST',
@@ -29,6 +28,11 @@ export class ListComponent implements OnInit {
               type: 'string',
               gate: 'title',
               required: true
+            },
+            {
+              name: 'Description',
+              type: 'string',
+              gate: 'title'
             }
           ]
         }

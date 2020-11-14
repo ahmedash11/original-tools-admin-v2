@@ -81,6 +81,9 @@ var CRUDService = /** @class */ (function () {
     CRUDService.prototype.deleteData = function (gate, query) {
         var params = new http_1.HttpParams();
         var requestUrl = this.url + gate;
+        query = {
+            where: JSON.stringify(query)
+        };
         for (var index in query) {
             params = params.set(index, query[index]);
         }
@@ -900,32 +903,29 @@ var GenericListComponent = /** @class */ (function () {
         var q = __assign({ id: data.id });
         var dialogRef = this.layoutUtilsService.deleteElement(_title, _description, _waitDesciption);
         dialogRef.afterClosed().subscribe(function (res) {
-            console.log('TCL: GenericListComponent -> delete -> res', res);
-            if (!res) {
-                return;
-            }
-            _this.listChanged.emit(true);
-            _this.listData = _this.listData.filter(function (item) { return item['id'] !== data.id; });
-            _this.changeDetectorRefs.detectChanges();
-            _this.layoutUtilsService.showActionNotification(_deleteMessage);
-            // this._crudService
-            //   .deleteData(this.gate, q)
-            //   .then((deleteRes) => {
-            //     this.listChanged.emit(true);
-            //     this.layoutUtilsService.showActionNotification(
-            //       _deleteMessage
-            //     );
-            //     this.loadList().then(() => {
-            //       this.changeDetectorRefs.detectChanges();
-            //     });
-            //   })
-            //   .catch((err) => {
-            //     this.layoutUtilsService.showActionNotification(
-            //       `Failed to delete ${this.title}`,
-            //       MessageType.Delete
-            //     );
-            //     console.error(err);
-            //   });
+            // console.log('TCL: GenericListComponent -> delete -> res', res);
+            // if (!res) {
+            //   return;
+            // }
+            // this.listChanged.emit(true);
+            // this.listData = this.listData.filter(
+            //   (item) => item['id'] !== data.id
+            // );
+            // this.changeDetectorRefs.detectChanges();
+            // this.layoutUtilsService.showActionNotification(_deleteMessage);
+            _this._crudService
+                .deleteData(_this.gate, q)
+                .then(function (deleteRes) {
+                _this.listChanged.emit(true);
+                _this.layoutUtilsService.showActionNotification(_deleteMessage);
+                _this.loadList().then(function () {
+                    _this.changeDetectorRefs.detectChanges();
+                });
+            })
+                .catch(function (err) {
+                _this.layoutUtilsService.showActionNotification("Failed to delete " + _this.title, crud_1.MessageType.Delete);
+                console.error(err);
+            });
         });
     };
     GenericListComponent.prototype.handleFilterChange = function ($event, filterObj) {

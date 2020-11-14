@@ -139,7 +139,6 @@ var ListComponent = /** @class */ (function () {
         this.title = 'brands';
         this.brandsModel = {
             form: {
-                wrapperKey: 'brands',
                 type: 'special',
                 endPoint: 'api/brands',
                 httpMethod: 'POST',
@@ -152,6 +151,11 @@ var ListComponent = /** @class */ (function () {
                                 type: 'string',
                                 gate: 'title',
                                 required: true
+                            },
+                            {
+                                name: 'Description',
+                                type: 'string',
+                                gate: 'title'
                             }
                         ]
                     }
