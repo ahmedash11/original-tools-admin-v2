@@ -154,7 +154,7 @@ export class GenericListComponent implements OnInit, OnDestroy {
       // this.layoutUtilsService.showActionNotification(_deleteMessage);
 
       this._crudService
-        .deleteData(this.gate, q)
+        .deleteOne(this.gate, q.id)
         .then((deleteRes) => {
           this.listChanged.emit(true);
           this.layoutUtilsService.showActionNotification(

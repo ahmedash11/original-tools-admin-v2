@@ -42,6 +42,7 @@ import { AlbumsModule } from '../../albums/albums.module';
 import { PostsModule } from '../../posts/posts.module';
 import { BrandsModule } from '../../brands/brands.module';
 import { CategoriesModule } from '../../categories/categories.module';
+import { TagsModule } from '../../tags/tags.module';
 import { ProductsModule } from '../../products/products.module';
 import { HtmlClassService } from './html-class.service';
 import { HeaderMobileComponent } from './header/header-mobile/header-mobile.component';
@@ -126,6 +127,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     PostsModule,
     BrandsModule,
     CategoriesModule,
+    TagsModule,
     ProductsModule,
     NgxDaterangepickerMd,
     InlineSVGModule

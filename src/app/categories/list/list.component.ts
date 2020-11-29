@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
   public categoriesModel: any = {
     form: {
       wrapperKey: 'categories',
-      type: 'special',
+      // type: 'special',
       endPoint: 'api/categories',
       httpMethod: 'POST',
       groups: [
@@ -34,6 +34,11 @@ export class ListComponent implements OnInit {
               name: 'Description',
               type: 'string',
               gate: 'description',
+            },
+            {
+              name: 'Image',
+              type: 'file',
+              gate: 'img'
             }
           ]
         }
@@ -54,11 +59,6 @@ export class ListComponent implements OnInit {
         key: 'title',
         search: true,
         searchKey: 'title'
-      },
-      {
-        display: 'Description',
-        type: 'string',
-        key: 'description',
       },
       {
         display: 'Actions',

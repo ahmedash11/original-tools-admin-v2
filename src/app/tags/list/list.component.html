@@ -1,0 +1,9 @@
+<kt-portlet>
+  <kt-generic-list
+    *ngIf="tagsModel"
+    [modelData]="tagsModel"
+    [query]="tagsQuery"
+    [title]="'Tag'"
+    [gate]="tagsAPI"
+  ></kt-generic-list>
+</kt-portlet>

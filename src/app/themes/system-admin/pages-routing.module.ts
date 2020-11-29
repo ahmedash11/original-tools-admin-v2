@@ -44,6 +44,10 @@ const routes: Routes = [
         loadChildren: '../../categories/categories.module#CategoriesModule'
       },
       {
+        path: 'tags',
+        loadChildren: '../../tags/tags.module#TagsModule'
+      },
+      {
         path: 'products',
         loadChildren: '../../products/products.module#ProductsModule'
       },

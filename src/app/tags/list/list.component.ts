@@ -10,17 +10,19 @@ import Swal from 'sweetalert2';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  public brandsQuery = {};
-  public brandsAPI = 'brands';
-  public title = 'brands';
+  public tagsQuery = {};
+  public tagsAPI = 'tags';
+  public title = 'tags';
 
-  public brandsModel: any = {
+  public tagsModel: any = {
     form: {
-      endPoint: 'api/brands',
+      wrapperKey: 'tags',
+      // type: 'special',
+      endPoint: 'api/tags',
       httpMethod: 'POST',
       groups: [
         {
-          title: 'Brand Data',
+          title: 'Tag Data',
           inputs: [
             {
               name: 'Title',
@@ -31,32 +33,22 @@ export class ListComponent implements OnInit {
             {
               name: 'Meta Title',
               type: 'string',
-              gate: 'meta_title',
+              gate: 'meta_title'
             },
             {
               name: 'Slug',
               type: 'string',
-              gate: 'slug',
+              gate: 'slug'
             },
             {
               name: 'Active',
               type: 'boolean',
-              gate: 'active',
-            },
-            {
-              name: 'Description',
-              type: 'textarea',
-              gate: 'description'
+              gate: 'active'
             },
             {
               name: 'Meta Description',
               type: 'textarea',
               gate: 'meta_description'
-            },
-            {
-              name: 'Image',
-              type: 'file',
-              gate: 'img'
             }
           ]
         }

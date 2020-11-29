@@ -46,6 +46,12 @@ export class MenuConfig {
           page: '/categories'
         },
         {
+          title: 'Tags',
+          icon: 'fas fa-tags',
+          bullet: 'line',
+          page: '/tags'
+        },
+        {
           title: 'Products',
           icon: 'fas fa-tools',
           bullet: 'line',

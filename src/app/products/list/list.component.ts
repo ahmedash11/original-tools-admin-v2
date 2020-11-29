@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
   public productsModel: any = {
     form: {
       wrapperKey: 'products',
-      type: 'special',
+      // type: 'special',
       endPoint: 'api/products',
       httpMethod: 'POST',
       groups: [
@@ -31,9 +31,14 @@ export class ListComponent implements OnInit {
               required: true
             },
             {
-              name: 'Description',
+              name: 'Meta Title',
               type: 'string',
-              gate: 'description',
+              gate: 'meta_title'
+            },
+            {
+              name: 'Video Url',
+              type: 'string',
+              gate: 'url'
             },
             {
               name: 'Price',
@@ -44,13 +49,43 @@ export class ListComponent implements OnInit {
             {
               name: 'Cost',
               type: 'number',
-              gate: 'cost',
+              gate: 'cost'
             },
             {
               name: 'Quantity',
               type: 'number',
-              gate: 'quantity',
+              gate: 'quantity'
             },
+            {
+              name: 'Content',
+              type: 'textarea',
+              gate: 'content'
+            },
+            {
+              name: 'Tech Info',
+              type: 'textarea',
+              gate: 'techInfo'
+            },
+            {
+              name: 'Addings',
+              type: 'textarea',
+              gate: 'addings'
+            },
+            {
+              name: 'Description',
+              type: 'textarea',
+              gate: 'description'
+            },
+            {
+              name: 'Meta Description',
+              type: 'textarea',
+              gate: 'meta_description'
+            },
+            {
+              name: 'Image',
+              type: 'file',
+              gate: 'img'
+            }
           ]
         }
       ]
@@ -74,17 +109,17 @@ export class ListComponent implements OnInit {
       {
         display: 'Price',
         type: 'number',
-        key: 'price',
+        key: 'price'
       },
       {
         display: 'Views',
         type: 'number',
-        key: 'views',
+        key: 'views'
       },
       {
         display: 'Quantity',
         type: 'number',
-        key: 'quantity',
+        key: 'quantity'
       },
       {
         display: 'Actions',

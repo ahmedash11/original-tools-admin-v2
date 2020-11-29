@@ -53,6 +53,15 @@ export class CRUDService {
       .toPromise();
   }
 
+  deleteOne(gate, dataid): Promise<any> {
+    let params = new HttpParams();
+    let requestUrl = this.url + gate;
+    return this.http
+      .delete(`${requestUrl}/${dataid}`, { params: params })
+      .toPromise();
+  }
+
+  
   deleteData(gate, query): Promise<any> {
     let params = new HttpParams();
     let requestUrl = this.url + gate;
