@@ -297,33 +297,38 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 var map = {
 	"../../albums/albums.module": [
 		"./src/app/albums/albums.module.ts",
-		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~86bbbb91",
+		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe",
 		"default~albums-albums-module~app-themes-system-admin-theme-module",
 		"common"
 	],
 	"../../brands/brands.module": [
 		"./src/app/brands/brands.module.ts",
-		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~86bbbb91",
+		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe",
 		"common"
 	],
 	"../../categories/categories.module": [
 		"./src/app/categories/categories.module.ts",
-		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~86bbbb91",
+		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe",
 		"common"
 	],
 	"../../posts/posts.module": [
 		"./src/app/posts/posts.module.ts",
-		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~86bbbb91",
+		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe",
 		"common"
 	],
 	"../../products/products.module": [
 		"./src/app/products/products.module.ts",
-		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~86bbbb91",
+		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe",
+		"common"
+	],
+	"../../tags/tags.module": [
+		"./src/app/tags/tags.module.ts",
+		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe",
 		"common"
 	],
 	"../../users/users.module": [
 		"./src/app/users/users.module.ts",
-		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~86bbbb91",
+		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe",
 		"common",
 		"users-users-module"
 	],
@@ -332,7 +337,7 @@ var map = {
 	],
 	"app/themes/system-admin/theme.module": [
 		"./src/app/themes/system-admin/theme.module.ts",
-		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~86bbbb91",
+		"default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe",
 		"default~albums-albums-module~app-themes-system-admin-theme-module",
 		"common",
 		"app-themes-system-admin-theme-module"

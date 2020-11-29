@@ -1361,6 +1361,12 @@ var MenuConfig = /** @class */ (function () {
                         page: '/categories'
                     },
                     {
+                        title: 'Tags',
+                        icon: 'fas fa-tags',
+                        bullet: 'line',
+                        page: '/tags'
+                    },
+                    {
                         title: 'Products',
                         icon: 'fas fa-tools',
                         bullet: 'line',
@@ -3830,6 +3836,10 @@ var routes = [
                 loadChildren: '../../categories/categories.module#CategoriesModule'
             },
             {
+                path: 'tags',
+                loadChildren: '../../tags/tags.module#TagsModule'
+            },
+            {
                 path: 'products',
                 loadChildren: '../../products/products.module#ProductsModule'
             },
@@ -3981,6 +3991,7 @@ var albums_module_1 = __webpack_require__(/*! ../../albums/albums.module */ "./s
 var posts_module_1 = __webpack_require__(/*! ../../posts/posts.module */ "./src/app/posts/posts.module.ts");
 var brands_module_1 = __webpack_require__(/*! ../../brands/brands.module */ "./src/app/brands/brands.module.ts");
 var categories_module_1 = __webpack_require__(/*! ../../categories/categories.module */ "./src/app/categories/categories.module.ts");
+var tags_module_1 = __webpack_require__(/*! ../../tags/tags.module */ "./src/app/tags/tags.module.ts");
 var products_module_1 = __webpack_require__(/*! ../../products/products.module */ "./src/app/products/products.module.ts");
 var html_class_service_1 = __webpack_require__(/*! ./html-class.service */ "./src/app/themes/system-admin/html-class.service.ts");
 var header_mobile_component_1 = __webpack_require__(/*! ./header/header-mobile/header-mobile.component */ "./src/app/themes/system-admin/header/header-mobile/header-mobile.component.ts");
@@ -4052,6 +4063,7 @@ var ThemeModule = /** @class */ (function () {
                 posts_module_1.PostsModule,
                 brands_module_1.BrandsModule,
                 categories_module_1.CategoriesModule,
+                tags_module_1.TagsModule,
                 products_module_1.ProductsModule,
                 ngx_daterangepicker_material_1.NgxDaterangepickerMd,
                 ng_inline_svg_1.InlineSVGModule

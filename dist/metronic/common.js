@@ -139,7 +139,6 @@ var ListComponent = /** @class */ (function () {
         this.title = 'brands';
         this.brandsModel = {
             form: {
-                type: 'special',
                 endPoint: 'api/brands',
                 httpMethod: 'POST',
                 groups: [
@@ -153,9 +152,34 @@ var ListComponent = /** @class */ (function () {
                                 required: true
                             },
                             {
-                                name: 'Description',
+                                name: 'Meta Title',
                                 type: 'string',
-                                gate: 'title'
+                                gate: 'meta_title',
+                            },
+                            {
+                                name: 'Slug',
+                                type: 'string',
+                                gate: 'slug',
+                            },
+                            {
+                                name: 'Active',
+                                type: 'boolean',
+                                gate: 'active',
+                            },
+                            {
+                                name: 'Description',
+                                type: 'textarea',
+                                gate: 'description'
+                            },
+                            {
+                                name: 'Meta Description',
+                                type: 'textarea',
+                                gate: 'meta_description'
+                            },
+                            {
+                                name: 'Image',
+                                type: 'file',
+                                gate: 'img'
                             }
                         ]
                     }
@@ -352,7 +376,7 @@ var ListComponent = /** @class */ (function () {
         this.categoriesModel = {
             form: {
                 wrapperKey: 'categories',
-                type: 'special',
+                // type: 'special',
                 endPoint: 'api/categories',
                 httpMethod: 'POST',
                 groups: [
@@ -369,6 +393,11 @@ var ListComponent = /** @class */ (function () {
                                 name: 'Description',
                                 type: 'string',
                                 gate: 'description',
+                            },
+                            {
+                                name: 'Image',
+                                type: 'file',
+                                gate: 'img'
                             }
                         ]
                     }
@@ -388,11 +417,6 @@ var ListComponent = /** @class */ (function () {
                     key: 'title',
                     search: true,
                     searchKey: 'title'
-                },
-                {
-                    display: 'Description',
-                    type: 'string',
-                    key: 'description',
                 },
                 {
                     display: 'Actions',
@@ -715,7 +739,7 @@ var ListComponent = /** @class */ (function () {
         this.productsModel = {
             form: {
                 wrapperKey: 'products',
-                type: 'special',
+                // type: 'special',
                 endPoint: 'api/products',
                 httpMethod: 'POST',
                 groups: [
@@ -729,9 +753,14 @@ var ListComponent = /** @class */ (function () {
                                 required: true
                             },
                             {
-                                name: 'Description',
+                                name: 'Meta Title',
                                 type: 'string',
-                                gate: 'description',
+                                gate: 'meta_title'
+                            },
+                            {
+                                name: 'Video Url',
+                                type: 'string',
+                                gate: 'url'
                             },
                             {
                                 name: 'Price',
@@ -742,13 +771,43 @@ var ListComponent = /** @class */ (function () {
                             {
                                 name: 'Cost',
                                 type: 'number',
-                                gate: 'cost',
+                                gate: 'cost'
                             },
                             {
                                 name: 'Quantity',
                                 type: 'number',
-                                gate: 'quantity',
+                                gate: 'quantity'
                             },
+                            {
+                                name: 'Content',
+                                type: 'textarea',
+                                gate: 'content'
+                            },
+                            {
+                                name: 'Tech Info',
+                                type: 'textarea',
+                                gate: 'techInfo'
+                            },
+                            {
+                                name: 'Addings',
+                                type: 'textarea',
+                                gate: 'addings'
+                            },
+                            {
+                                name: 'Description',
+                                type: 'textarea',
+                                gate: 'description'
+                            },
+                            {
+                                name: 'Meta Description',
+                                type: 'textarea',
+                                gate: 'meta_description'
+                            },
+                            {
+                                name: 'Image',
+                                type: 'file',
+                                gate: 'img'
+                            }
                         ]
                     }
                 ]
@@ -771,17 +830,17 @@ var ListComponent = /** @class */ (function () {
                 {
                     display: 'Price',
                     type: 'number',
-                    key: 'price',
+                    key: 'price'
                 },
                 {
                     display: 'Views',
                     type: 'number',
-                    key: 'views',
+                    key: 'views'
                 },
                 {
                     display: 'Quantity',
                     type: 'number',
-                    key: 'quantity',
+                    key: 'quantity'
                 },
                 {
                     display: 'Actions',
@@ -899,6 +958,234 @@ var ProductsModule = /** @class */ (function () {
     return ProductsModule;
 }());
 exports.ProductsModule = ProductsModule;
+
+
+/***/ }),
+
+/***/ "./src/app/tags/list/list.component.html":
+/*!***********************************************!*\
+  !*** ./src/app/tags/list/list.component.html ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<kt-portlet>\n  <kt-generic-list\n    *ngIf=\"tagsModel\"\n    [modelData]=\"tagsModel\"\n    [query]=\"tagsQuery\"\n    [title]=\"'Tag'\"\n    [gate]=\"tagsAPI\"\n  ></kt-generic-list>\n</kt-portlet>\n"
+
+/***/ }),
+
+/***/ "./src/app/tags/list/list.component.scss":
+/*!***********************************************!*\
+  !*** ./src/app/tags/list/list.component.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RhZ3MvbGlzdC9saXN0LmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/tags/list/list.component.ts":
+/*!*********************************************!*\
+  !*** ./src/app/tags/list/list.component.ts ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var ng_bootstrap_1 = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+var crud_service_1 = __webpack_require__(/*! ../../shared/_services/crud.service */ "./src/app/shared/_services/crud.service.ts");
+var crud_1 = __webpack_require__(/*! ../../core/_base/crud */ "./src/app/core/_base/crud/index.ts");
+var ListComponent = /** @class */ (function () {
+    function ListComponent(modalService, _crudService, layoutUtils) {
+        this.modalService = modalService;
+        this._crudService = _crudService;
+        this.layoutUtils = layoutUtils;
+        this.tagsQuery = {};
+        this.tagsAPI = 'tags';
+        this.title = 'tags';
+        this.tagsModel = {
+            form: {
+                wrapperKey: 'tags',
+                // type: 'special',
+                endPoint: 'api/tags',
+                httpMethod: 'POST',
+                groups: [
+                    {
+                        title: 'Tag Data',
+                        inputs: [
+                            {
+                                name: 'Title',
+                                type: 'string',
+                                gate: 'title',
+                                required: true
+                            },
+                            {
+                                name: 'Meta Title',
+                                type: 'string',
+                                gate: 'meta_title'
+                            },
+                            {
+                                name: 'Slug',
+                                type: 'string',
+                                gate: 'slug'
+                            },
+                            {
+                                name: 'Active',
+                                type: 'boolean',
+                                gate: 'active'
+                            },
+                            {
+                                name: 'Meta Description',
+                                type: 'textarea',
+                                gate: 'meta_description'
+                            }
+                        ]
+                    }
+                ]
+            },
+            list: [
+                {
+                    display: 'ID',
+                    type: 'number',
+                    key: 'id',
+                    search: true,
+                    searchKey: 'id'
+                },
+                {
+                    display: 'Title',
+                    type: 'string',
+                    key: 'title',
+                    search: true,
+                    searchKey: 'title'
+                },
+                {
+                    display: 'Actions',
+                    type: 'array',
+                    key: '',
+                    actions: {
+                        delete: true,
+                        view: false,
+                        edit: true
+                        // custom: {
+                        //   label: 'Verify',
+                        //   icon: 'check',
+                        //   disableKey: 'verified'
+                        // }
+                    }
+                }
+            ]
+        };
+    }
+    ListComponent.prototype.ngOnInit = function () { };
+    ListComponent = __decorate([
+        core_1.Component({
+            selector: 'kt-list',
+            template: __webpack_require__(/*! ./list.component.html */ "./src/app/tags/list/list.component.html"),
+            styles: [__webpack_require__(/*! ./list.component.scss */ "./src/app/tags/list/list.component.scss")]
+        }),
+        __metadata("design:paramtypes", [ng_bootstrap_1.NgbModal,
+            crud_service_1.CRUDService,
+            crud_1.LayoutUtilsService])
+    ], ListComponent);
+    return ListComponent;
+}());
+exports.ListComponent = ListComponent;
+
+
+/***/ }),
+
+/***/ "./src/app/tags/tags-routing.module.ts":
+/*!*********************************************!*\
+  !*** ./src/app/tags/tags-routing.module.ts ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var router_1 = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var list_component_1 = __webpack_require__(/*! ./list/list.component */ "./src/app/tags/list/list.component.ts");
+var routes = [
+    {
+        path: '',
+        component: list_component_1.ListComponent
+    }
+];
+var TagsRoutingModule = /** @class */ (function () {
+    function TagsRoutingModule() {
+    }
+    TagsRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [router_1.RouterModule.forChild(routes)],
+            exports: [router_1.RouterModule]
+        })
+    ], TagsRoutingModule);
+    return TagsRoutingModule;
+}());
+exports.TagsRoutingModule = TagsRoutingModule;
+
+
+/***/ }),
+
+/***/ "./src/app/tags/tags.module.ts":
+/*!*************************************!*\
+  !*** ./src/app/tags/tags.module.ts ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var common_1 = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+var shared_module_1 = __webpack_require__(/*! ../shared/shared.module */ "./src/app/shared/shared.module.ts");
+var partials_module_1 = __webpack_require__(/*! ../partials/partials.module */ "./src/app/partials/partials.module.ts");
+var tags_routing_module_1 = __webpack_require__(/*! ./tags-routing.module */ "./src/app/tags/tags-routing.module.ts");
+var list_component_1 = __webpack_require__(/*! ./list/list.component */ "./src/app/tags/list/list.component.ts");
+var TagsModule = /** @class */ (function () {
+    function TagsModule() {
+    }
+    TagsModule = __decorate([
+        core_1.NgModule({
+            declarations: [list_component_1.ListComponent],
+            imports: [
+                common_1.CommonModule,
+                tags_routing_module_1.TagsRoutingModule,
+                partials_module_1.PartialsModule,
+                shared_module_1.SharedModule
+            ]
+        })
+    ], TagsModule);
+    return TagsModule;
+}());
+exports.TagsModule = TagsModule;
 
 
 /***/ })

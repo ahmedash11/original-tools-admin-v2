@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~86bbbb91"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe"],{
 
 /***/ "./src/app/shared/_services/crud.service.ts":
 /*!**************************************************!*\
@@ -76,6 +76,13 @@ var CRUDService = /** @class */ (function () {
         }
         return this.http
             .get(requestUrl + "/" + ID, { params: params })
+            .toPromise();
+    };
+    CRUDService.prototype.deleteOne = function (gate, dataid) {
+        var params = new http_1.HttpParams();
+        var requestUrl = this.url + gate;
+        return this.http
+            .delete(requestUrl + "/" + dataid, { params: params })
             .toPromise();
     };
     CRUDService.prototype.deleteData = function (gate, query) {
@@ -914,7 +921,7 @@ var GenericListComponent = /** @class */ (function () {
             // this.changeDetectorRefs.detectChanges();
             // this.layoutUtilsService.showActionNotification(_deleteMessage);
             _this._crudService
-                .deleteData(_this.gate, q)
+                .deleteOne(_this.gate, q.id)
                 .then(function (deleteRes) {
                 _this.listChanged.emit(true);
                 _this.layoutUtilsService.showActionNotification(_deleteMessage);
@@ -1285,4 +1292,4 @@ exports.SharedModule = SharedModule;
 /***/ })
 
 }]);
-//# sourceMappingURL=default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~86bbbb91.js.map
+//# sourceMappingURL=default~albums-albums-module~app-themes-system-admin-theme-module~brands-brands-module~categories-ca~8d2a66fe.js.map
