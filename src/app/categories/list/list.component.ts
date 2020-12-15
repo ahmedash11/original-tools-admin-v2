@@ -31,9 +31,19 @@ export class ListComponent implements OnInit {
               required: true
             },
             {
-              name: 'Description',
+              name: 'Meta Title',
               type: 'string',
+              gate: 'metaTitle'
+            },
+            {
+              name: 'Description',
+              type: 'textarea',
               gate: 'description',
+            },
+            {
+              name: 'Meta Description',
+              type: 'textarea',
+              gate: 'metaDescription'
             },
             {
               name: 'Image',

@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
             {
               name: 'Meta Title',
               type: 'string',
-              gate: 'meta_title'
+              gate: 'metaTitle'
             },
             {
               name: 'Video Url',
@@ -79,7 +79,7 @@ export class ListComponent implements OnInit {
             {
               name: 'Meta Description',
               type: 'textarea',
-              gate: 'meta_description'
+              gate: 'metaDescription'
             },
             {
               name: 'Image',

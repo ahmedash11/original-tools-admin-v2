@@ -31,17 +31,17 @@ export class ListComponent implements OnInit {
             {
               name: 'Meta Title',
               type: 'string',
-              gate: 'meta_title',
+              gate: 'metaTitle'
             },
             {
               name: 'Slug',
               type: 'string',
-              gate: 'slug',
+              gate: 'slug'
             },
             {
               name: 'Active',
               type: 'boolean',
-              gate: 'active',
+              gate: 'active'
             },
             {
               name: 'Description',
@@ -51,7 +51,7 @@ export class ListComponent implements OnInit {
             {
               name: 'Meta Description',
               type: 'textarea',
-              gate: 'meta_description'
+              gate: 'metaDescription'
             },
             {
               name: 'Image',
