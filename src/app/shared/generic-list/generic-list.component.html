@@ -3,7 +3,7 @@
     [title]="title + ' List'"
     [class]="'kt-portlet__head--lg'"
   >
-    <ng-container ktPortletTools>
+    <ng-container ktPortletTools *ngIf="modelData.form" >
       <button
         mat-raised-button
         color="primary"
@@ -30,12 +30,24 @@
                 (keyup.enter)="sendSearch(searchInput.value)"
               />
               <mat-hint>
-                <strong>Search</strong> by Name or ID
+                <strong>Search</strong> by Title or ID
               </mat-hint>
             </mat-form-field>
           </div>
         </div>
         <br />
+      </div>
+      <div class="row align-items-start" *ngIf="modelData.filters">
+        <div class="col-auto" *ngFor="let filterObj of modelData.filters">
+          <mat-form-field>
+            <mat-label>{{ filterObj.label }}</mat-label>
+            <select (change)="handleFilterChange($event, filterObj)" matNativeControl>
+              <option *ngFor="let opt of filterObj.options" value="{{ opt.value }}">{{ opt.label | titlecase }}
+              </option>
+              <option value="null">All</option>
+            </select>
+          </mat-form-field>
+        </div>
       </div>
     </div>
 

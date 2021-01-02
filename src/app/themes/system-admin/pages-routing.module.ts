@@ -7,7 +7,7 @@ import { ErrorPageComponent } from './content/error-page/error-page.component';
 // Auth
 import { AuthGuard } from '../../services/auth.guard';
 // Admin
-import { AdminGuard } from '../../services/admin.guard';
+// import { AdminGuard } from '../../services/admin.guard';
 // Other imports
 import { HomepageComponent } from '../../pages/homepage/homepage.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -28,36 +28,21 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'albums',
-        loadChildren: '../../albums/albums.module#AlbumsModule'
-      },
-      {
-        path: 'posts',
-        loadChildren: '../../posts/posts.module#PostsModule'
-      },
-      {
-        path: 'brands',
-        loadChildren: '../../brands/brands.module#BrandsModule'
-      },
-      {
-        path: 'categories',
-        loadChildren: '../../categories/categories.module#CategoriesModule'
-      },
-      {
-        path: 'tags',
-        loadChildren: '../../tags/tags.module#TagsModule'
+        path: 'users',
+        loadChildren: '../../user-managment/user-managment.module#UserManagmentModule'
       },
       {
         path: 'products',
-        loadChildren: '../../products/products.module#ProductsModule'
+        loadChildren:
+          '../../product-managment/product-managment.module#ProductManagmentModule'
       },
       {
-        path: 'users',
-        loadChildren: '../../users/users.module#UsersModule',
-        canActivate: [AdminGuard]
+        path: 'orders',
+        loadChildren:
+          '../../order-managment/order-managment.module#OrderManagmentModule'
       },
       { path: 'error/:type', component: ErrorPageComponent },
-      { path: '', redirectTo: 'brands', pathMatch: 'full' },
+      { path: '', redirectTo: 'products/list', pathMatch: 'full' },
       { path: '**', component: NotFoundComponent, pathMatch: 'full' }
     ]
   }

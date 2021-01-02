@@ -38,12 +38,10 @@ import { PartialsModule } from '../../partials/partials.module';
 import { BaseComponent } from './base/base.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesModule } from '../../pages/pages.module';
-import { AlbumsModule } from '../../albums/albums.module';
 import { PostsModule } from '../../posts/posts.module';
-import { BrandsModule } from '../../brands/brands.module';
-import { CategoriesModule } from '../../categories/categories.module';
-import { TagsModule } from '../../tags/tags.module';
-import { ProductsModule } from '../../products/products.module';
+import { ProductManagmentModule } from '../../product-managment/product-managment.module';
+import { OrderManagmentModule } from '../../order-managment/order-managment.module';
+import { UserManagmentModule } from '../../user-managment/user-managment.module';
 import { HtmlClassService } from './html-class.service';
 import { HeaderMobileComponent } from './header/header-mobile/header-mobile.component';
 import { ErrorPageComponent } from './content/error-page/error-page.component';
@@ -123,12 +121,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatTooltipModule,
     TranslateModule.forChild(),
     LoadingBarModule,
-    AlbumsModule,
     PostsModule,
-    BrandsModule,
-    CategoriesModule,
-    TagsModule,
-    ProductsModule,
+    ProductManagmentModule,
+    OrderManagmentModule,
+    UserManagmentModule,
     NgxDaterangepickerMd,
     InlineSVGModule
   ]

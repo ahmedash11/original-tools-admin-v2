@@ -1,0 +1,245 @@
+<div class="row flexbox-container" *ngIf="request">
+  <!-- Patient Details Card -->
+  <div class="col-md-6">
+    <kt-portlet [class]="'full-height'">
+      <kt-portlet-header [title]="'Customer #' + request.customer.id">
+        <ng-container ktPortletTools>
+          <button
+            style="display: none"
+            mat-icon-button
+            matTooltip="Edit"
+          >
+            <mat-icon>create</mat-icon>
+          </button>
+        </ng-container>
+      </kt-portlet-header>
+      <kt-portlet-body>
+        <div class="kt-widget4 maxH">
+          <div class="kt-widget4__item ng-star-inserted">
+            <div
+              class="kt-widget4__pic kt-widget4__pic--pic ng-star-inserted"
+            >
+              <img
+                class="patient_image"
+                alt="user_image"
+                [src]="'../../../assets/media/users/default.jpg'"
+              />
+            </div>
+            <div class="kt-widget4__info ng-star-inserted">
+              <div class="kt-widget4__title">
+                {{
+                  request.customer.firstName +
+                    ' ' +
+                    request.customer.lastName
+                }}
+              </div>
+              <p class="kt-widget4__text ng-star-inserted">
+                <b>Mobile: </b>{{ request.customer.mobile }}
+              </p>
+              <p
+                *ngIf="request.passportNumber"
+                class="kt-widget4__text ng-star-inserted"
+              >
+                <b>Passport Number: </b> {{ request.passportNumber }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </kt-portlet-body>
+    </kt-portlet>
+  </div>
+  <!-- Request Details Card -->
+  <div class="col-md-6">
+    <kt-portlet [class]="'full-height'">
+      <kt-portlet-header [title]="'Order Details'">
+        <ng-container ktPortletTools>
+          <button
+            (click)="downloadInvoice()"
+            mat-button
+            matTooltip="Invoice"
+          >
+            <mat-icon>get_app</mat-icon>
+          </button>
+          <button
+            mat-raised-button
+            mat-button
+            color="primary"
+            *ngIf="
+              request.status === 'Pending' ||
+              request.status === 'payment-collected'
+            "
+            matTooltip="Update order state"
+            (click)="updateOrderState()"
+          >
+            Update Order Status
+          </button>
+        </ng-container>
+      </kt-portlet-header>
+      <kt-portlet-body>
+        <div class="kt-widget4 maxH">
+          <div class="kt-widget4__item ng-star-inserted">
+            <div class="kt-widget4__info ng-star-inserted">
+              <div>
+                <div class="kt-widget4__title">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h3 [className]="styles[status]">
+                        Order #{{ request.id }}
+                      </h3>
+
+                      <h4 [className]="styles[status]">
+                        {{ request.status | titlecase }}
+                      </h4>
+                    </div>
+                  </div>
+                  <br />
+                  <p
+                    *ngIf="request.orderDate"
+                    class="kt-widget4__text ng-star-inserted"
+                  >
+                    <b>Order Date: </b>
+                    {{ request.orderDate | date: 'dd/MM/yyyy hh:mm' }}
+                  </p>
+                  <p
+                    *ngIf="request.deliveryDate"
+                    class="kt-widget4__text ng-star-inserted"
+                  >
+                    <b>Delivery Date: </b>
+                    {{
+                      request.deliveryDate | date: 'dd/MM/yyyy hh:mm'
+                    }}
+                  </p>
+                  <p
+                    *ngIf="request.customer.address"
+                    class="kt-widget4__text ng-star-inserted"
+                  >
+                    <b>City: </b>
+                    {{ request.customer.address.city.title }}
+                  </p>
+                  <p
+                    *ngIf="request.customer.address"
+                    class="kt-widget4__text ng-star-inserted"
+                  >
+                    <b>Area: </b>
+                    {{ request.customer.address.area.title }}
+                  </p>
+                  <p
+                    *ngIf="request.customer.address"
+                    class="kt-widget4__text ng-star-inserted"
+                  >
+                    <b>Address: </b>
+                    B: {{ request.customer.address.building || '_' }},
+                    {{ request.customer.address.street || 'None' }},
+                    F: {{ request.customer.address.floor || '_' }},
+                    Apt:
+                    {{ request.customer.address.apartment || '_' }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </kt-portlet-body>
+    </kt-portlet>
+  </div>
+  <!-- Payment Order Details Card -->
+  <div class="col-md-3" *ngIf="request.total">
+    <kt-portlet [class]="'full-height'">
+      <kt-portlet-header [title]="'Payment Details'">
+      </kt-portlet-header>
+      <kt-portlet-body>
+        <div class="kt-widget4 maxH">
+          <div class="kt-widget4__item ng-star-inserted">
+            <div class="kt-widget4__info ng-star-inserted">
+              <div>
+                <div
+                  class="kt-widget4__title"
+                  [className]="styles[status]"
+                >
+                  <h3>Payment Ref #{{ request.id }}</h3>
+                  <h4>
+                    {{ 'Pending' | titlecase }}
+                  </h4>
+                  <span
+                    class="text-success"
+                    *ngIf="request.status !== 'Pending'"
+                  >
+                    <i class="fa fa-check"></i> Confirmed
+                  </span>
+                  <p class="kt-widget4__text ng-star-inserted">
+                    <b>Amount: </b>
+                    {{ request.total }} EGP
+                  </p>
+                  <p class="kt-widget4__text ng-star-inserted">
+                    <b>Method: </b>
+                    {{ 'Cash on Delivery' | titlecase }}
+                    <!-- <b *ngIf="request.paymentOrder.gatewayReference">
+                      {{ request.paymentOrder.gatewayReference }}
+                    </b> -->
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </kt-portlet-body>
+    </kt-portlet>
+  </div>
+  <!-- Related Products -->
+  <div class="col-md-9">
+    <kt-portlet>
+      <kt-portlet-header [title]="'Products'">
+        <!-- <ng-container ktPortletTools>
+            <button (click)="openAddTestModal()" mat-icon-button color="primary" matTooltip="Add Test">
+              <i class="fa fa-plus"></i>
+            </button>
+          </ng-container> -->
+      </kt-portlet-header>
+      <kt-portlet-body>
+        <div class="kt-widget4">
+          <div class="kt-widget4__item ng-star-inserted">
+            <div
+              class="kt-widget4__info ng-star-inserted"
+              *ngIf="request.products.length != 0; else noTest"
+              style="width: 100%"
+            >
+              <div *ngFor="let item of request.products">
+                <div
+                  class="kt-widget4__pic kt-widget4__pic--pic ng-star-inserted pull-right"
+                >
+                  <img
+                    class="patient_image"
+                    alt="user_image"
+                    [src]="item.img"
+                  />
+                </div>
+                <div class="kt-widget4__title">
+                  <h5>
+                    {{ item.title | titlecase }}
+                  </h5>
+                </div>
+                <p class="kt-widget4__text ng-star-inserted">
+                  <b>Model: </b>{{ item.model }}
+                </p>
+                <p class="kt-widget4__text ng-star-inserted">
+                  <b>Brand: </b> {{ item.brand.title | titlecase }}
+                </p>
+                <p class="kt-widget4__text ng-star-inserted">
+                  <b>Price: </b>{{ item.price + ' EGP' }}
+                </p>
+                <p class="kt-widget4__text ng-star-inserted">
+                  <b>Quantity: </b>{{ item.orderQuantity }}
+                </p>
+              </div>
+            </div>
+            <ng-template #noTest>
+              <div class="kt-font-danger">
+                <h3>No Tests added</h3>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </kt-portlet-body>
+    </kt-portlet>
+  </div>
+</div>

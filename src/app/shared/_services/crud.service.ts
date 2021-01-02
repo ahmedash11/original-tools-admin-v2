@@ -53,6 +53,20 @@ export class CRUDService {
       .toPromise();
   }
 
+  getRelation(gate, ID, relation, query = {}): Promise<any> {
+    let params = new HttpParams();
+    let requestUrl = this.url + gate;
+    query = {
+      filter: JSON.stringify(query)
+    };
+    for (let index in query) {
+      params = params.set(index, query[index]);
+    }
+    return this.http
+      .get(`${requestUrl}/${ID}/${relation}`, { params: params })
+      .toPromise();
+  }
+
   deleteOne(gate, dataid): Promise<any> {
     let params = new HttpParams();
     let requestUrl = this.url + gate;
@@ -61,7 +75,6 @@ export class CRUDService {
       .toPromise();
   }
 
-  
   deleteData(gate, query): Promise<any> {
     let params = new HttpParams();
     let requestUrl = this.url + gate;

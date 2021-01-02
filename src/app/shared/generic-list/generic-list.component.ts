@@ -5,6 +5,7 @@ import {
   Output,
   ViewChild,
   EventEmitter,
+  SimpleChanges,
   ChangeDetectorRef,
   OnDestroy
 } from '@angular/core';
@@ -90,6 +91,12 @@ export class GenericListComponent implements OnInit, OnDestroy {
     //     }
     //   }
     // );
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log({ changes });
+
+    // You can also use catcoegoryId.previousValue and
+    // categoryId.firstChange for comparing old and new values
   }
 
   async getLabsFilters() {
