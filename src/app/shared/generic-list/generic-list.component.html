@@ -3,8 +3,9 @@
     [title]="title + ' List'"
     [class]="'kt-portlet__head--lg'"
   >
-    <ng-container ktPortletTools *ngIf="modelData.form" >
+    <ng-container ktPortletTools>
       <button
+        [hidden]="!modelData.form"
         mat-raised-button
         color="primary"
         matTooltip="Create new {{ title }}"
@@ -38,11 +39,21 @@
         <br />
       </div>
       <div class="row align-items-start" *ngIf="modelData.filters">
-        <div class="col-auto" *ngFor="let filterObj of modelData.filters">
+        <div
+          class="col-auto"
+          *ngFor="let filterObj of modelData.filters"
+        >
           <mat-form-field>
             <mat-label>{{ filterObj.label }}</mat-label>
-            <select (change)="handleFilterChange($event, filterObj)" matNativeControl>
-              <option *ngFor="let opt of filterObj.options" value="{{ opt.value }}">{{ opt.label | titlecase }}
+            <select
+              (change)="handleFilterChange($event, filterObj)"
+              matNativeControl
+            >
+              <option
+                *ngFor="let opt of filterObj.options"
+                value="{{ opt.value }}"
+              >
+                {{ opt.label | titlecase }}
               </option>
               <option value="null">All</option>
             </select>
