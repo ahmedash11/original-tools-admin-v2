@@ -122,7 +122,7 @@ export class GenericListComponent implements OnInit, OnDestroy {
       if (listItem.search) {
         if (isNaN(value) && listItem.type === 'string') {
           query[listItem.searchKey] = {
-            like: value + '%'
+            like: '%' + value + '%'
           };
         } else if (!isNaN(value) && listItem.key === 'id') {
           query[listItem.searchKey] = +value;
