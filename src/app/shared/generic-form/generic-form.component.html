@@ -5,7 +5,7 @@
 >
   <kt-portlet>
     <div *ngIf="wizardFlag" class="form-wizard">
-      <div class="form-body kt-wizard-v1" style="padding: 10px;">
+      <div class="form-body kt-wizard-v1" style="padding: 10px">
         <div class="kt-wizard-v1__nav">
           <div class="kt-wizard-v1__nav-items">
             <a
@@ -55,7 +55,7 @@
           >
             <div
               *ngIf="formSection.title && !wizardFlag"
-              style="padding-bottom: 20px;"
+              style="padding-bottom: 20px"
               class="col-xs-12 col-lg-12 col-12"
             >
               {{ formSection.title }}
@@ -120,6 +120,7 @@
                         option.label ||
                           option.name ||
                           option.email ||
+                          option.title ||
                           (option.firstName + ' ' + option.lastName
                             | titlecase)
                       }}</mat-option
@@ -224,7 +225,7 @@
                   #fileBtn
                   type="file"
                   accept="image/*"
-                  style="display: none;"
+                  style="display: none"
                 />
                 <button
                   type="button"
@@ -235,13 +236,13 @@
                   {{ input.label || 'Choose File' }}
                 </button>
                 <mat-spinner
-                  style="color: black;"
+                  style="color: black"
                   [hidden]="uploading == 0"
                   [diameter]="30"
                 ></mat-spinner>
                 <div
                   class="d-flex flex-column"
-                  style="padding: 5px;"
+                  style="padding: 5px"
                   *ngIf="uploading == 0 && (imgURL || instanceData)"
                 >
                   <img

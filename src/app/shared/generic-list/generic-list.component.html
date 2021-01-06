@@ -211,6 +211,14 @@
                   ></i>
                 </ng-container>
               </div>
+              <div *ngSwitchCase="'img'">
+                <span>
+                  <img
+                    [src]="element[item.key]"
+                    style="width: 5rem; height: 5rem"
+                  />
+                </span>
+              </div>
 
               <div *ngSwitchCase="'combination'">
                 <span

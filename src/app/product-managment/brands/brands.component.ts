@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brands.component.scss']
 })
 export class BrandsComponent implements OnInit {
-
   public brandsQuery = {};
   public brandsAPI = 'brands';
   public title = 'brands';
@@ -62,11 +61,9 @@ export class BrandsComponent implements OnInit {
 
     list: [
       {
-        display: 'ID',
-        type: 'number',
-        key: 'id',
-        search: true,
-        searchKey: 'id'
+        display: 'Image',
+        type: 'img',
+        key: 'img'
       },
       {
         display: 'Title',
@@ -93,10 +90,7 @@ export class BrandsComponent implements OnInit {
     ]
   };
 
-  constructor(
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

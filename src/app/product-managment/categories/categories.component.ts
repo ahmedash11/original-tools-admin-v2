@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-
   public categoriesQuery = {};
   public categoriesAPI = 'categories';
   public title = 'categories';
@@ -33,9 +32,21 @@ export class CategoriesComponent implements OnInit {
               gate: 'metaTitle'
             },
             {
+              name: 'Parent Category',
+              type: 'select',
+              gate: 'parentId',
+              apiend: 'categories'
+            },
+            {
+              name: 'Section',
+              type: 'select',
+              gate: 'sectionId',
+              apiend: 'sections'
+            },
+            {
               name: 'Description',
               type: 'textarea',
-              gate: 'description',
+              gate: 'description'
             },
             {
               name: 'Meta Description',
@@ -54,11 +65,9 @@ export class CategoriesComponent implements OnInit {
 
     list: [
       {
-        display: 'ID',
-        type: 'number',
-        key: 'id',
-        search: true,
-        searchKey: 'id'
+        display: 'Image',
+        type: 'img',
+        key: 'img'
       },
       {
         display: 'Title',
@@ -85,10 +94,7 @@ export class CategoriesComponent implements OnInit {
     ]
   };
 
-  constructor(
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

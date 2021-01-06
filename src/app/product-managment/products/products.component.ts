@@ -32,6 +32,26 @@ export class ProductsComponent implements OnInit {
               gate: 'metaTitle'
             },
             {
+              name: 'Brand',
+              type: 'select',
+              gate: 'brandId',
+              required: true,
+              apiend: 'brands'
+            },
+            {
+              name: 'Category',
+              type: 'select',
+              gate: 'categoryId',
+              required: true,
+              apiend: 'categories'
+            },
+            {
+              name: 'Model',
+              type: 'string',
+              gate: 'model',
+              required: true
+            },
+            {
               name: 'Video Url',
               type: 'string',
               gate: 'url'
@@ -89,11 +109,16 @@ export class ProductsComponent implements OnInit {
 
     list: [
       {
-        display: 'ID',
-        type: 'number',
-        key: 'id',
+        display: 'Image',
+        type: 'img',
+        key: 'img'
+      },
+      {
+        display: 'Model',
+        type: 'string',
+        key: 'model',
         search: true,
-        searchKey: 'id'
+        searchKey: 'model'
       },
       {
         display: 'Title',
@@ -135,7 +160,6 @@ export class ProductsComponent implements OnInit {
     ]
   };
 
-  constructor(
-  ) {}
+  constructor() {}
   ngOnInit() {}
 }
