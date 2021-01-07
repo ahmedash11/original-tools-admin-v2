@@ -44,6 +44,11 @@ export class CategoriesComponent implements OnInit {
               apiend: 'sections'
             },
             {
+              name: 'Active',
+              type: 'boolean',
+              gate: 'active'
+            },
+            {
               name: 'Description',
               type: 'textarea',
               gate: 'description'

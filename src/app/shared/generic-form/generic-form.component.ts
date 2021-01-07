@@ -309,9 +309,9 @@ export class GenericFormComponent implements OnInit {
   uploadFile() {
     this.uploading++;
     return this._crudService
-      .uploadAttachment(this.selectedFile)
+      .uploadAttachment(this.gate, this.selectedFile)
       .then((response) => {
-        return response['uploadedFile'].link;
+        return response['files'][0].link;
       });
   }
 }

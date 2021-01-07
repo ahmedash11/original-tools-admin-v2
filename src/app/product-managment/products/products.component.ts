@@ -52,6 +52,16 @@ export class ProductsComponent implements OnInit {
               required: true
             },
             {
+              name: 'Avaliable',
+              type: 'boolean',
+              gate: 'available'
+            },
+            {
+              name: 'Active',
+              type: 'boolean',
+              gate: 'active'
+            },
+            {
               name: 'Video Url',
               type: 'string',
               gate: 'url'
@@ -123,9 +133,7 @@ export class ProductsComponent implements OnInit {
       {
         display: 'Title',
         type: 'string',
-        key: 'title',
-        search: true,
-        searchKey: 'title'
+        key: 'title'
       },
       {
         display: 'Price',

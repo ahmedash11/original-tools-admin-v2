@@ -121,9 +121,18 @@ export class GenericListComponent implements OnInit, OnDestroy {
     this.modelData.list.forEach((listItem) => {
       if (listItem.search) {
         if (isNaN(value) && listItem.type === 'string') {
-          query[listItem.searchKey] = {
-            like: '%' + value + '%'
-          };
+          query.or = [
+            {
+              [listItem.searchKey]: {
+                like: value.toUpperCase() + '%'
+              }
+            },
+            {
+              [listItem.searchKey]: {
+                like: value.toLowerCase() + '%'
+              }
+            }
+          ];
         } else if (!isNaN(value) && listItem.key === 'id') {
           query[listItem.searchKey] = +value;
         }

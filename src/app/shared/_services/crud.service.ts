@@ -149,12 +149,13 @@ export class CRUDService {
     return requestPromise.toPromise();
   }
 
-  public uploadAttachment(file: any, key = 'files') {
+  public uploadAttachment(gate: string, file: any, key = 'files') {
+    let requestUrl = this.url + gate;
     const input = new FormData();
     input.append(key, file, file.name);
 
     return this.http
-      .post(`/api//attachments/upload`, input, {
+      .post(`${requestUrl}/upload`, input, {
         headers: {}
       })
       .toPromise();
