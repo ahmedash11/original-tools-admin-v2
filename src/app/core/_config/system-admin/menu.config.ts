@@ -90,6 +90,12 @@ export class MenuConfig {
               icon: 'fas fa-check-square',
               bullet: 'line',
               page: '/orders/Completed'
+            },
+            {
+              title: 'Requests',
+              icon: 'fas fa-check-square',
+              bullet: 'line',
+              page: '/orders/requests'
             }
           ]
         },

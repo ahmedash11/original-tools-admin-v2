@@ -131,6 +131,11 @@ export class GenericListComponent implements OnInit, OnDestroy {
               [listItem.searchKey]: {
                 like: value.toLowerCase() + '%'
               }
+            },
+            {
+              [listItem.searchKey]: {
+                like: value + '%'
+              }
             }
           ];
         } else if (!isNaN(value) && listItem.key === 'id') {

@@ -146,7 +146,19 @@
                   [className]="item.styleClass"
                   style="text-transform: capitalize"
                 >
-                  <div *ngIf="element[item.objKey]; else isNull">
+                  <span *ngIf="item.objType === 'img'">
+                    <img
+                      [src]="element[item.objKey][item.key]"
+                      style="width: 5rem; height: 5rem"
+                    />
+                  </span>
+                  <div
+                    *ngIf="
+                      element[item.objKey] &&
+                        item.objType !== 'img';
+                      else isNull
+                    "
+                  >
                     {{ element[item.objKey][item.key] }}
                   </div>
                   <ng-template #isNull>

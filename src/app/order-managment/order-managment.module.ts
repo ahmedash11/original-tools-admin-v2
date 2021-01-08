@@ -7,9 +7,15 @@ import { PartialsModule } from '../partials/partials.module';
 import { DetailsComponent } from './details/details.component';
 import { ListComponent } from './list/list.component';
 import { CompletedListComponent } from './completed-list/completed-list.component';
+import { RequestsListComponent } from './requests-list/requests-list.component';
 
 @NgModule({
-  declarations: [DetailsComponent, ListComponent, CompletedListComponent],
+  declarations: [
+    DetailsComponent,
+    ListComponent,
+    CompletedListComponent,
+    RequestsListComponent
+  ],
   imports: [
     CommonModule,
     OrderManagmentRoutingModule,

@@ -4,8 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
 import { ListComponent } from './list/list.component';
 import { CompletedListComponent } from './completed-list/completed-list.component';
-
-
+import { RequestsListComponent } from './requests-list/requests-list.component';
 
 const routes: Routes = [
   {
@@ -20,10 +19,14 @@ const routes: Routes = [
     path: 'Completed',
     component: CompletedListComponent
   },
+  {
+    path: 'requests',
+    component: RequestsListComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class OrderManagmentRoutingModule { }
+export class OrderManagmentRoutingModule {}

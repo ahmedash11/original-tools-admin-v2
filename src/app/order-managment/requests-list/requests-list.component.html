@@ -1,0 +1,9 @@
+<kt-portlet>
+  <kt-generic-list
+    *ngIf="requestsModel"
+    [modelData]="requestsModel"
+    [query]="requestsQuery"
+    [title]="'Request'"
+    [gate]="requestAPI"
+  ></kt-generic-list>
+</kt-portlet>
