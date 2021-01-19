@@ -327,7 +327,7 @@ export class GenericListComponent implements OnInit, OnDestroy {
           '/requests/prescription/details',
           element.id
         ]);
-      else this.router.navigate([mode, element.id]);
+      else window.open(`${mode}${element.slug}`);
     }
   }
 

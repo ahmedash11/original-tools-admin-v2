@@ -65,7 +65,9 @@
               [ngStyle]="{ display: input.hidden ? 'none' : 'block' }"
               class="kt-margin-bottom-20-mobile"
               [ngClass]="{
-                'col-lg-12': input.type == 'textarea',
+                'col-lg-12':
+                  input.type == 'textarea' ||
+                  input.type == 'texteditor',
                 'col-lg-6': input.type != 'textarea'
               }"
             >
@@ -73,7 +75,9 @@
               <mat-form-field
                 class="mat-form-field-fluid"
                 *ngIf="
-                  input.type != 'boolean' && input.type != 'file'
+                  input.type != 'boolean' &&
+                  input.type != 'file' &&
+                  input.type !== 'texteditor'
                 "
                 [ngSwitch]="input.type"
                 appearance="outline"
@@ -206,6 +210,21 @@
                   >
                 </mat-error>
               </mat-form-field>
+
+              <div
+                class=""
+                style="padding-bottom: 5%"
+                *ngIf="input.type === 'texteditor'"
+              >
+                <label for="">
+                  {{ input.name }}
+                </label>
+                <angular-editor
+                  [required]="input.required"
+                  placeholder="{{ input.placeholder || input.name }}"
+                  formControlName="{{ input.gate }}"
+                ></angular-editor>
+              </div>
 
               <mat-checkbox
                 formControlName="{{ input.gate }}"

@@ -40,6 +40,7 @@ import {
   MatTreeModule,
   MatDatepickerModule
 } from '@angular/material';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PartialsModule } from '../partials/partials.module';
 import { GenericListComponent } from './generic-list/generic-list.component';
@@ -59,6 +60,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     NgbModule,
     PartialsModule,
+    AngularEditorModule,
     // Angular Material Module
     MatDatepickerModule,
     MatCheckboxModule,

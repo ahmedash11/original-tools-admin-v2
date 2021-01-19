@@ -62,11 +62,6 @@ export class ProductsComponent implements OnInit {
               gate: 'active'
             },
             {
-              name: 'Video Url',
-              type: 'string',
-              gate: 'url'
-            },
-            {
               name: 'Price',
               type: 'number',
               gate: 'price',
@@ -84,17 +79,17 @@ export class ProductsComponent implements OnInit {
             },
             {
               name: 'Content',
-              type: 'textarea',
+              type: 'texteditor',
               gate: 'content'
             },
             {
               name: 'Tech Info',
-              type: 'textarea',
+              type: 'texteditor',
               gate: 'techInfo'
             },
             {
               name: 'Addings',
-              type: 'textarea',
+              type: 'texteditor',
               gate: 'addings'
             },
             {
@@ -156,7 +151,7 @@ export class ProductsComponent implements OnInit {
         key: '',
         actions: {
           delete: true,
-          view: false,
+          view: 'https://etoolsshop.com/shop/products/',
           edit: true
           // custom: {
           //   label: 'Verify',
