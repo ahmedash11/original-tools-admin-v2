@@ -62,7 +62,7 @@ export class CompletedListComponent implements OnInit {
         key: '',
         actions: {
           delete: false,
-          view: '/orders/details',
+          view: '/orders/details/',
           edit: false
           // custom: {
           //   label: 'Verify',
