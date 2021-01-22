@@ -1,3 +1,9 @@
-<p>
-  ads works!
-</p>
+<kt-portlet>
+  <kt-generic-list
+    *ngIf="adsModel"
+    [modelData]="adsModel"
+    [query]="adsQuery"
+    [title]="'Ads'"
+    [gate]="adsAPI"
+  ></kt-generic-list>
+</kt-portlet>
