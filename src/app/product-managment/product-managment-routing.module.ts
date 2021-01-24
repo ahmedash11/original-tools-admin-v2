@@ -6,6 +6,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { TagsComponent } from './tags/tags.component';
 import { OffersComponent } from './offers/offers.component';
 import { AdsComponent } from './ads/ads.component';
+import { SectionsComponent } from './sections/sections.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'ads',
     component: AdsComponent
+  },
+  {
+    path: 'sections',
+    component: SectionsComponent
   },
   {
     path: 'list',

@@ -1,0 +1,9 @@
+<kt-portlet>
+  <kt-generic-list
+    *ngIf="sectionsModel"
+    [modelData]="sectionsModel"
+    [query]="sectionsQuery"
+    [title]="'Sections'"
+    [gate]="sectionsAPI"
+  ></kt-generic-list>
+</kt-portlet>

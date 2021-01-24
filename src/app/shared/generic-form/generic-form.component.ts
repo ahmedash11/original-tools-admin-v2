@@ -140,7 +140,7 @@ export class GenericFormComponent implements OnInit {
     let sentData = {};
     const formValue = this.formGroup.value;
     for (let index in formValue) {
-      if (formValue[index]) {
+      if (formValue[index] || formValue[index] === false) {
         sentData[index] = formValue[index];
       }
     }

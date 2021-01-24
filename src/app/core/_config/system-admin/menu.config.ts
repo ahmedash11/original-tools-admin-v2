@@ -56,6 +56,12 @@ export class MenuConfig {
               page: '/products/categories'
             },
             {
+              title: 'Sections',
+              icon: 'fab fa-buffer',
+              bullet: 'line',
+              page: '/products/sections'
+            },
+            {
               title: 'Tags',
               icon: 'fas fa-tags',
               bullet: 'line',

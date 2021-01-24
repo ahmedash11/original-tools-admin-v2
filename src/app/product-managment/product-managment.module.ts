@@ -10,6 +10,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { TagsComponent } from './tags/tags.component';
 import { OffersComponent } from './offers/offers.component';
 import { AdsComponent } from './ads/ads.component';
+import { SectionsComponent } from './sections/sections.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AdsComponent } from './ads/ads.component';
     CategoriesComponent,
     TagsComponent,
     OffersComponent,
-    AdsComponent
+    AdsComponent,
+    SectionsComponent
   ],
   imports: [
     CommonModule,

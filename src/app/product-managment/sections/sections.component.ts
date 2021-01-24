@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'kt-ads',
-  templateUrl: './ads.component.html',
-  styleUrls: ['./ads.component.scss']
+  selector: 'kt-sections',
+  templateUrl: './sections.component.html',
+  styleUrls: ['./sections.component.scss']
 })
-export class AdsComponent implements OnInit {
-  public adsQuery = { order: ['order ASC'] };
-  public adsAPI = 'ads';
-  public title = 'ads';
+export class SectionsComponent implements OnInit {
+  public sectionsQuery = { order: ['order ASC'] };
+  public sectionsAPI = 'sections';
+  public title = 'sections';
 
-  public adsModel: any = {
+  public sectionsModel: any = {
     form: {
-      wrapperKey: 'ads',
+      wrapperKey: 'sections',
       // type: 'special',
-      endPoint: 'api/ads',
+      endPoint: 'api/sections',
       httpMethod: 'POST',
       groups: [
         {
-          title: 'Ads Data',
+          title: 'Sections Data',
           inputs: [
             {
               name: 'Title',
@@ -27,19 +27,9 @@ export class AdsComponent implements OnInit {
               required: true
             },
             {
-              name: 'Text',
+              name: 'Meta Title',
               type: 'string',
-              gate: 'text'
-            },
-            {
-              name: 'Link',
-              type: 'string',
-              gate: 'link',
-            },
-            {
-              name: 'View Shop Button',
-              type: 'boolean',
-              gate: 'viewButton'
+              gate: 'metaTitle'
             },
             {
               name: 'Order',
@@ -47,14 +37,14 @@ export class AdsComponent implements OnInit {
               gate: 'order'
             },
             {
-              name: 'Desktop Image',
-              type: 'file',
-              gate: 'desktopImg'
+              name: 'Active',
+              type: 'boolean',
+              gate: 'active'
             },
             {
-              name: 'Mobile Image',
-              type: 'file',
-              gate: 'mobileImg'
+              name: 'Meta Description',
+              type: 'textarea',
+              gate: 'metaDescription'
             }
           ]
         }
@@ -62,11 +52,6 @@ export class AdsComponent implements OnInit {
     },
 
     list: [
-      {
-        display: 'Desktop Image',
-        type: 'img',
-        key: 'desktopImg'
-      },
       {
         display: 'Title',
         type: 'string',
@@ -78,9 +63,9 @@ export class AdsComponent implements OnInit {
         key: 'order'
       },
       {
-        display: 'Mobile Image',
-        type: 'img',
-        key: 'mobileImg'
+        display: 'Active',
+        type: 'boolean',
+        key: 'active'
       },
       {
         display: 'Actions',
@@ -88,7 +73,6 @@ export class AdsComponent implements OnInit {
         key: '',
         actions: {
           delete: true,
-          // view: 'https://etoolsshop.com/shop/products/',
           edit: true
           // custom: {
           //   label: 'Verify',
