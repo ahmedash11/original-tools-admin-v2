@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompletedListComponent implements OnInit {
   public ordersQuery = {
+    order: ['id DESC'],
     where: {
       status: 'Completed'
     },

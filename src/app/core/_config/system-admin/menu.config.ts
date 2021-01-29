@@ -57,7 +57,7 @@ export class MenuConfig {
             },
             {
               title: 'Subcategories',
-              icon: 'fas fa-stream',
+              icon: 'fas fa-list-alt',
               bullet: 'line',
               page: '/products/subcategories'
             },
@@ -105,7 +105,7 @@ export class MenuConfig {
             },
             {
               title: 'Requests',
-              icon: 'fas fa-check-square',
+              icon: 'fas fa-window-restore',
               bullet: 'line',
               page: '/orders/requests'
             }

@@ -279,11 +279,11 @@ export class GenericListComponent implements OnInit, OnDestroy {
         .then((res) => {
           if (res.id) {
             this.listData = this.listData.map((elem) => {
-              return elem['id'] === res.id ? res : elem;
+              if (elem['id'] === res.id) elem = { ...elem, ...res };
+              return elem;
             });
           } else {
             res.id = this.listData.length + 1;
-            console.log(res);
             this.listData = [
               ...this.listData,
               {
@@ -313,7 +313,10 @@ export class GenericListComponent implements OnInit, OnDestroy {
           '/requests/prescription/details',
           element.id
         ]);
-      else window.open(`${mode}${element.slug || element.id}`);
+      else {
+        console.log({ element });
+        window.open(`${mode}${element.slug || element.id}`);
+      }
     }
   }
 

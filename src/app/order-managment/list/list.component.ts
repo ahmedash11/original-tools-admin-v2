@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
   public ordersQuery = {
+    order: ['id DESC'],
     where: {
       status: 'Pending'
     },
@@ -39,6 +40,11 @@ export class ListComponent implements OnInit {
         type: 'obj',
         key: 'mobile',
         objKey: 'customer'
+      },
+      {
+        display: 'Order Date',
+        type: 'date',
+        key: 'orderDate',
       },
       {
         display: 'Status',
