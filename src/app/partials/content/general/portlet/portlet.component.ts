@@ -35,14 +35,14 @@ export class PortletComponent implements OnInit, AfterViewInit {
   // portlet root classes
   @Input() class: string;
 
-  @ViewChild('portlet') portlet: ElementRef;
+  @ViewChild('portlet', { static: true }) portlet: ElementRef;
 
   // portlet header component template
-  @ViewChild(PortletHeaderComponent) header: PortletHeaderComponent;
+  @ViewChild(PortletHeaderComponent, { static: false }) header: PortletHeaderComponent;
   // portlet body component template
-  @ViewChild(PortletBodyComponent) body: PortletBodyComponent;
+  @ViewChild(PortletBodyComponent, { static: false }) body: PortletBodyComponent;
   // portlet footer component template
-  @ViewChild(PortletFooterComponent) footer: PortletFooterComponent;
+  @ViewChild(PortletFooterComponent, { static: false }) footer: PortletFooterComponent;
 
   /**
    * Component constructor

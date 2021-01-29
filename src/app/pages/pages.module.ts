@@ -9,21 +9,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PartialsModule } from '../partials/partials.module';
 // Pages
 import { CoreModule } from '../core/core.module';
-import {
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatRippleModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatSortModule,
-  MatTooltipModule,
-  MatDialogModule,
-  MatSelectModule,
-  MatDividerModule,
-  MatIconModule,
-  MatAutocompleteModule
-} from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FileMetaComponent } from './files/files-meta/files-meta.component';
 

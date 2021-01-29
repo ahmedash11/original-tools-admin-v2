@@ -1,11 +1,8 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import {
-  MatTableDataSource,
-  MatPaginator,
-  MatSort,
-  MatDialog,
-  MatDialogConfig
-} from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { FileService } from '../../../services/files.service';
 
 @Component({
@@ -30,8 +27,8 @@ export class FileMetaComponent implements OnInit {
   pageSize: number = 5;
   pageSizeOptions = [5, 10, 50, 100];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private fileService: FileService, private dialog: MatDialog) {}
 

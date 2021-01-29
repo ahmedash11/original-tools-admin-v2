@@ -1,7 +1,8 @@
 // Angular
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 // RXJS
 import { tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
@@ -20,8 +21,8 @@ export class DataTableComponent implements OnInit {
 	// Public properties
 	dataSource: DataTableDataSource;
 	displayedColumns = ['id', 'cManufacture', 'cModel', 'cMileage', 'cColor', 'cPrice', 'cCondition', 'cStatus', 'actions' ];
-	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatSort) sort: MatSort;
+	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+	@ViewChild(MatSort, { static: true }) sort: MatSort;
 	selection = new SelectionModel<DataTableItemModel>(true, []);
 
 	/**

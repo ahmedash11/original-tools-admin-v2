@@ -29,17 +29,17 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        loadChildren: '../../user-managment/user-managment.module#UserManagmentModule'
+        loadChildren: () => import('../../user-managment/user-managment.module').then(m => m.UserManagmentModule)
       },
       {
         path: 'products',
         loadChildren:
-          '../../product-managment/product-managment.module#ProductManagmentModule'
+          () => import('../../product-managment/product-managment.module').then(m => m.ProductManagmentModule)
       },
       {
         path: 'orders',
         loadChildren:
-          '../../order-managment/order-managment.module#OrderManagmentModule'
+          () => import('../../order-managment/order-managment.module').then(m => m.OrderManagmentModule)
       },
       { path: 'error/:type', component: ErrorPageComponent },
       { path: '', redirectTo: 'products/list', pathMatch: 'full' },
