@@ -14,7 +14,7 @@ import {
   LayoutUtilsService,
   MessageType
 } from '../../core/_base/crud';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GenericFormModalComponent } from '../generic-form-modal/generic-form-modal.component';
 import { interval } from 'rxjs/internal/observable/interval';

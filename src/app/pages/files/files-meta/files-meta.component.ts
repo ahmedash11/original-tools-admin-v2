@@ -1,11 +1,8 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import {
-  MatTableDataSource,
-  MatPaginator,
-  MatSort,
-  MatDialog,
-  MatDialogConfig
-} from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { FileService } from '../../../services/files.service';
 
 @Component({
