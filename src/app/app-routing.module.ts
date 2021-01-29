@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'auth', loadChildren: 'app/pages/auth/auth.module#AuthModule' },
+  { path: 'auth', loadChildren: () => import('app/pages/auth/auth.module').then(m => m.AuthModule) },
 
   // enable this router to set which demo theme to load,
   {
     path: '',
-    loadChildren: 'app/themes/system-admin/theme.module#ThemeModule'
+    loadChildren: () => import('app/themes/system-admin/theme.module').then(m => m.ThemeModule)
   },
   { path: '**', redirectTo: 'error/403', pathMatch: 'full' }
 ];

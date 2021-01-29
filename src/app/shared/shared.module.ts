@@ -36,7 +36,6 @@ import {
   MatButtonToggleModule,
   MatBottomSheetModule,
   MatExpansionModule,
-  _MatChipListMixinBase,
   MatMenuModule,
   MatTreeModule,
   MatDatepickerModule

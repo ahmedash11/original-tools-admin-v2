@@ -27,8 +27,8 @@ export class FileMetaComponent implements OnInit {
   pageSize: number = 5;
   pageSizeOptions = [5, 10, 50, 100];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private fileService: FileService, private dialog: MatDialog) {}
 

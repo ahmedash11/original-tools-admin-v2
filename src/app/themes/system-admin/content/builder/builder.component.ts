@@ -12,7 +12,7 @@ import { LayoutConfigModel, LayoutConfigService } from '../../../../core/_base/l
 export class BuilderComponent implements OnInit {
 	// Public properties
 	model: LayoutConfigModel;
-	@ViewChild('form') form: NgForm;
+	@ViewChild('form', { static: true }) form: NgForm;
 
 	/**
 	 * Component constructor

@@ -52,7 +52,7 @@ export class GenericListComponent implements OnInit, OnDestroy {
   public refreshListner: any;
   public intervalListener: any;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
     private _crudService: CRUDService,
