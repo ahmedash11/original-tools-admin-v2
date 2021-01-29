@@ -91,6 +91,22 @@
                     formControlName="{{ input.gate }}"
                     [required]="input.required"
                   >
+                    <mat-option>
+                      <ngx-mat-select-search
+                        formControlName="{{ input.gate + 'Filter' }}"
+                        (ngModelChange)="
+                          filterMyOptions($event, input)
+                        "
+                        placeholderLabel="Find {{ input.name }}..."
+                        noEntriesFoundLabel="'no matching {{
+                          input.name
+                        }} found'"
+                      ></ngx-mat-select-search>
+                    </mat-option>
+
+                    <mat-option *ngIf="!input.required" [value]="null"
+                      >None</mat-option
+                    >
                     <mat-option
                       *ngFor="let option of input.options"
                       [value]="option"
@@ -117,6 +133,22 @@
                     [required]="input.required"
                     formControlName="{{ input.gate }}"
                   >
+                    <mat-option>
+                      <ngx-mat-select-search
+                        formControlName="{{ input.gate + 'Filter' }}"
+                        (ngModelChange)="
+                          filterMyOptions($event, input)
+                        "
+                        placeholderLabel="Find {{ input.name }}..."
+                        noEntriesFoundLabel="'no matching {{
+                          input.name
+                        }} found'"
+                      ></ngx-mat-select-search>
+                    </mat-option>
+
+                    <mat-option *ngIf="!input.required" [value]="0"
+                      >None</mat-option
+                    >
                     <mat-option
                       *ngFor="let option of input.options"
                       [value]="option.id"

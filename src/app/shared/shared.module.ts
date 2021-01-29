@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GenericFormComponent } from './generic-form/generic-form.component';
 import { GenericFormModalComponent } from './generic-form-modal/generic-form-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import {
   MatButtonModule,
   MatFormFieldModule,
@@ -61,6 +62,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NgbModule,
     PartialsModule,
     AngularEditorModule,
+    NgxMatSelectSearchModule,
     // Angular Material Module
     MatDatepickerModule,
     MatCheckboxModule,

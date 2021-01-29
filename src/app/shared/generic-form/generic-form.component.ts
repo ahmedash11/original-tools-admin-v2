@@ -93,15 +93,21 @@ export class GenericFormComponent implements OnInit {
         inputValidators
       );
 
-      if (element.type === 'select' && !element.simpleOpts) {
-        this._crudService
-          .getData(element.apiend, { limit: 70 })
-          .then((res) => {
-            element.options = (res.data ? res.data : res) || [];
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+      if (element.type === 'select') {
+        if (!element.simpleOpts) {
+          this._crudService
+            .getData(element.apiend, { limit: 70 })
+            .then((res) => {
+              element.options = (res.data ? res.data : res) || [];
+              element.fetchedOptions = element.options;
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        } else {
+          element.options = element.simpleOpts;
+        }
+        group[element.gate + 'Filter'] = new FormControl();
       }
     });
 
@@ -241,6 +247,30 @@ export class GenericFormComponent implements OnInit {
       control.hasError(validationType) &&
       (control.dirty || control.touched);
     return result;
+  }
+  filterMyOptions(event, input) {
+    if (!event) {
+      input.options = input.simpleOpts
+        ? input.simpleOpts
+        : input.fetchedOptions;
+      return;
+    } else {
+      event = event.toLowerCase();
+    }
+    input.options = input.options.filter((option) => {
+      return (
+        (option.label &&
+          option.label.toLowerCase().indexOf(event) > -1) ||
+        (option.name &&
+          option.name.toLowerCase().indexOf(event) > -1) ||
+        (option.email &&
+          option.email.toLowerCase().indexOf(event) > -1) ||
+        (option.title &&
+          option.title.toLowerCase().indexOf(event) > -1) ||
+        (typeof option === 'string' &&
+          option.toLowerCase().indexOf(event) > -1)
+      );
+    });
   }
 
   onFileChange(event, controlName) {
