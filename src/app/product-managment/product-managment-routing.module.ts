@@ -7,6 +7,7 @@ import { TagsComponent } from './tags/tags.component';
 import { OffersComponent } from './offers/offers.component';
 import { AdsComponent } from './ads/ads.component';
 import { SectionsComponent } from './sections/sections.component';
+import { SubcategoriesComponent } from './subcategories/subcategories.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'categories',
     component: CategoriesComponent
+  },
+  {
+    path: 'subcategories',
+    component: SubcategoriesComponent
   },
   {
     path: 'tags',

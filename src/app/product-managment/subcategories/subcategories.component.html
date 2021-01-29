@@ -1,0 +1,9 @@
+<kt-portlet>
+  <kt-generic-list
+    *ngIf="subcategoriesModel"
+    [modelData]="subcategoriesModel"
+    [query]="subcategoriesQuery"
+    [title]="'Subcategory'"
+    [gate]="subcategoriesAPI"
+  ></kt-generic-list>
+</kt-portlet>

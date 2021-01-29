@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'kt-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+  selector: 'kt-subcategories',
+  templateUrl: './subcategories.component.html',
+  styleUrls: ['./subcategories.component.scss']
 })
-export class CategoriesComponent implements OnInit {
-  public categoriesQuery = {
+export class SubcategoriesComponent implements OnInit {
+  public subcategoriesQuery = {
     where: {
       parentId: {
-        eq: null
+        neq: null
       }
     }
   };
-  public categoriesAPI = 'categories';
-  public title = 'categories';
+  public subcategoriesAPI = 'categories';
+  public title = 'subcategories';
 
-  public categoriesModel: any = {
+  public subcategoriesModel: any = {
     form: {
-      wrapperKey: 'categories',
+      wrapperKey: 'subcategories',
       // type: 'special',
       endPoint: 'api/categories',
       httpMethod: 'POST',
@@ -38,10 +38,11 @@ export class CategoriesComponent implements OnInit {
               gate: 'metaTitle'
             },
             {
-              name: 'Section',
+              name: 'Parent Category',
               type: 'select',
-              gate: 'sectionId',
-              apiend: 'sections'
+              gate: 'parentId',
+              apiend: 'categories',
+              required: true
             },
             {
               name: 'Active',
@@ -89,11 +90,6 @@ export class CategoriesComponent implements OnInit {
           delete: true,
           view: false,
           edit: true
-          // custom: {
-          //   label: 'Verify',
-          //   icon: 'check',
-          //   disableKey: 'verified'
-          // }
         }
       }
     ]

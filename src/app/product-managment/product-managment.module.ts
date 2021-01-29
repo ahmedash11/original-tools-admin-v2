@@ -11,12 +11,14 @@ import { TagsComponent } from './tags/tags.component';
 import { OffersComponent } from './offers/offers.component';
 import { AdsComponent } from './ads/ads.component';
 import { SectionsComponent } from './sections/sections.component';
+import { SubcategoriesComponent } from './subcategories/subcategories.component';
 
 @NgModule({
   declarations: [
     ProductsComponent,
     BrandsComponent,
     CategoriesComponent,
+    SubcategoriesComponent,
     TagsComponent,
     OffersComponent,
     AdsComponent,
