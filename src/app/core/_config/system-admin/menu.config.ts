@@ -84,6 +84,12 @@ export class MenuConfig {
               icon: 'fab fa-adversal',
               bullet: 'line',
               page: '/products/ads'
+            },
+            {
+              title: 'Toolbar',
+              icon: 'fas fa-toolbox',
+              bullet: 'line',
+              page: '/products/toolbar'
             }
           ]
         },

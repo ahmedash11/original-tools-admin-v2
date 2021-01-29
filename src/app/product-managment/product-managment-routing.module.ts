@@ -8,6 +8,7 @@ import { OffersComponent } from './offers/offers.component';
 import { AdsComponent } from './ads/ads.component';
 import { SectionsComponent } from './sections/sections.component';
 import { SubcategoriesComponent } from './subcategories/subcategories.component';
+import { ToolbarComponent } from './toolbar/toolbars.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'sections',
     component: SectionsComponent
+  },
+  {
+    path: 'toolbar',
+    component: ToolbarComponent
   },
   {
     path: 'list',

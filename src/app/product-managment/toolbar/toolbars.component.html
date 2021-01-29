@@ -1,0 +1,9 @@
+<kt-portlet>
+  <kt-generic-list
+    *ngIf="toolbarsModel"
+    [modelData]="toolbarsModel"
+    [query]="toolbarsQuery"
+    [title]="'Toolbar'"
+    [gate]="toolbarsAPI"
+  ></kt-generic-list>
+</kt-portlet>

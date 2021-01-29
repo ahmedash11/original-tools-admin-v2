@@ -12,6 +12,7 @@ import { OffersComponent } from './offers/offers.component';
 import { AdsComponent } from './ads/ads.component';
 import { SectionsComponent } from './sections/sections.component';
 import { SubcategoriesComponent } from './subcategories/subcategories.component';
+import { ToolbarComponent} from './toolbar/toolbars.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SubcategoriesComponent } from './subcategories/subcategories.component'
     TagsComponent,
     OffersComponent,
     AdsComponent,
-    SectionsComponent
+    SectionsComponent,
+    ToolbarComponent
   ],
   imports: [
     CommonModule,
