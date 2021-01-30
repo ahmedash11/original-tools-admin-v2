@@ -96,7 +96,7 @@ export class GenericFormComponent implements OnInit {
       if (element.type === 'select') {
         if (!element.simpleOpts) {
           this._crudService
-            .getData(element.apiend, { limit: 70 })
+            .getData(element.apiend, { limit: 1000 })
             .then((res) => {
               element.options = (res.data ? res.data : res) || [];
               element.fetchedOptions = element.options;

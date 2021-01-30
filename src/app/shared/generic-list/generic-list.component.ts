@@ -200,7 +200,7 @@ export class GenericListComponent implements OnInit, OnDestroy {
     this.query.limit = this.pageSize;
     let query = { ...this.query };
     if (search) {
-      query = { ...search, ...this.query };
+      query.where = { ...search.where, ...this.query.where };
     }
 
     return this._crudService
@@ -209,9 +209,7 @@ export class GenericListComponent implements OnInit, OnDestroy {
         this.totalLength = (
           await this._crudService.getCount(this.gate, query)
         ).count;
-        console.log({ gate: this.gate, length: this.totalLength });
         this.listData = res.data || res.results || res;
-        console.log(this.listData);
 
         this.changeDetectorRefs.detectChanges();
         this.loader = true;
