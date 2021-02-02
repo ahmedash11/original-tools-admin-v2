@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://[::1]:4000",
+    "target": "http://143.110.170.143:4000",
     "secure": false,
     "logLevel": "debug",
     "pathRewrite": {

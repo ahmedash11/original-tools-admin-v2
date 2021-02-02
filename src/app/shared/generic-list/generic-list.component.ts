@@ -51,6 +51,7 @@ export class GenericListComponent implements OnInit, OnDestroy {
   public selectedItem: any;
   public refreshListner: any;
   public intervalListener: any;
+  public searchQuery: any = {};
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -129,10 +130,13 @@ export class GenericListComponent implements OnInit, OnDestroy {
         }
       }
     });
+    this.paginator.pageIndex = 0;
     // query['searchFields'] = query['searchFields'].join(',');
     if (+value === 0) {
+      this.searchQuery = {};
       return this.loadList();
     }
+    this.searchQuery = { where: query };
     this.loadList({ where: query });
   }
 
@@ -199,9 +203,7 @@ export class GenericListComponent implements OnInit, OnDestroy {
     this.query.skip = this.paginator.pageIndex * this.pageSize;
     this.query.limit = this.pageSize;
     let query = { ...this.query };
-    if (search) {
-      query.where = { ...search.where, ...this.query.where };
-    }
+    query.where = { ...this.searchQuery.where, ...this.query.where };
 
     return this._crudService
       .getData(this.gate, query)
