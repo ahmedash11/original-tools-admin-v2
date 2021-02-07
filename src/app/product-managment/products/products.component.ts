@@ -46,6 +46,12 @@ export class ProductsComponent implements OnInit {
               apiend: 'categories'
             },
             {
+              name: 'Slug',
+              type: 'string',
+              gate: 'slug',
+              required: true
+            },
+            {
               name: 'Model',
               type: 'string',
               gate: 'model',
