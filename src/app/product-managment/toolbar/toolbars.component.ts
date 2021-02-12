@@ -35,6 +35,11 @@ export class ToolbarComponent implements OnInit {
               name: 'Link',
               type: 'string',
               gate: 'link'
+            },
+            {
+              name: 'Blog related',
+              type: 'boolean',
+              gate: 'isBlog'
             }
           ]
         }
@@ -56,6 +61,11 @@ export class ToolbarComponent implements OnInit {
         display: 'Link',
         type: 'string',
         key: 'link'
+      },
+      {
+        name: 'Blog related',
+        type: 'boolean',
+        key: 'isBlog'
       },
       {
         display: 'Actions',
