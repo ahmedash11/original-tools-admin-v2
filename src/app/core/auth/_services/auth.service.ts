@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/do';
 import { User } from '../_models/user.model';
+import { Merchant } from '../_models/merchant.model';
 import { Permission } from '../_models/permission.model';
 import { Role } from '../_models/role.model';
 import { catchError, map } from 'rxjs/operators';
@@ -11,6 +13,9 @@ import {
   QueryResultsModel
 } from '../../_base/crud';
 import { Router } from '@angular/router';
+import moment from 'moment';
+import { of } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 const API_USERS_URL = 'api/users';
 const API_PERMISSION_URL = 'api/permissions';
@@ -19,12 +24,58 @@ const API_ROLES_URL = 'api/roles';
 @Injectable()
 export class AuthService {
   constructor(private http: HttpClient) {}
+
+  errorHandler(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+          `body was: ${error.error}`
+      );
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.'
+    );
+  }
   // Authentication/Authorization
-  login(email: string, password: string): Observable<User> {
-    return this.http.post<User>(API_USERS_URL + '/login', {
-      email,
-      password
-    });
+  login(email: string, password: string) {
+    return this.http
+      .post<User>('/api/login', { email, password })
+      .do((res) => this.setSession);
+  }
+
+  private setSession(authResult) {
+    const expiresAt = moment().add(authResult.expiresIn, 'second');
+
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem(
+      'expires_at',
+      JSON.stringify(expiresAt.valueOf())
+    );
+  }
+
+  logout() {
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+  }
+
+  public isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
+
+  isLoggedOut() {
+    return !this.isLoggedIn();
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem('expires_at');
+    const expiresAt = JSON.parse(expiration);
+    return moment(expiresAt);
   }
 
   getUserByToken(): Observable<User> {
@@ -36,12 +87,22 @@ export class AuthService {
     });
   }
 
-  register(user: User): Promise<any> {
-    const httpHeaders = new HttpHeaders();
-    httpHeaders.set('Content-Type', 'application/json');
+  register(merchant: Merchant): Promise<any> {
+    const userToken = localStorage.getItem('x-access-token');
+    let header = new HttpHeaders().append(
+      'Authorization',
+      'Bearer ' + userToken
+    );
+    const body = JSON.stringify(merchant);
+
     return this.http
-      .post<User>(API_USERS_URL, user, { headers: httpHeaders })
-      .toPromise();
+      .post<Merchant>(API_USERS_URL + '/sign-up/merchant', merchant, {
+        headers: header
+      })
+      .toPromise()
+      .then((merchant) => JSON.stringify(merchant))
+      .catch((err) => console.log(err));
+    // .catch(catchError(this.errorHandler))
   }
 
   /*

@@ -118,30 +118,17 @@ export class MenuConfig {
           ]
         },
         {
-          title: 'Users Managment',
+          title: 'Merchants Managment',
           icon: 'fa fa-users',
           submenu: [
             {
-              title: 'Customers',
-              icon: 'fas fa-user-friends',
-              bullet: 'line',
-              page: '/users/customers'
-            },
-            {
-              title: 'Merchants',
+              title: 'Create Merchant Account',
               icon: 'fas fa-people-carry',
               bullet: 'line',
-              page: '/users/merchants'
+              page: '/auth/register'
             }
           ]
         }
-
-        // {
-        //   title: 'Users Managment',
-        //   icon: 'fa fa-users',
-        //   bullet: 'line',
-        //   page: '/users'
-        // }
       ]
     }
   };
