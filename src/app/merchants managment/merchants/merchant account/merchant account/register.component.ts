@@ -14,14 +14,14 @@ import { finalize, takeUntil, tap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 // NGRX
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../core/reducers';
+import { AppState } from '../../../../core/reducers';
 // Auth
 import {
   AuthNoticeService,
   AuthService,
   Register,
-  User
-} from '../../../core/auth';
+  Merchant
+} from '../../../../core/auth';
 import { Subject } from 'rxjs';
 import { ConfirmPasswordValidator } from './confirm-password.validator';
 
@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   initRegisterForm() {
     this.registerForm = this.fb.group(
       {
-        fullname: [
+        name: [
           '',
           Validators.compose([
             Validators.required,
@@ -103,14 +103,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
             Validators.minLength(3),
             // https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
             Validators.maxLength(320)
-          ])
-        ],
-        username: [
-          '',
-          Validators.compose([
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(100)
           ])
         ],
         password: [
@@ -153,30 +145,28 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.loading = true;
 
-    if (!controls['agree'].value) {
-      // you must agree the terms and condition
-      // checkbox cannot work inside mat-form-field https://github.com/angular/material2/issues/7891
-      this.authNoticeService.setNotice(
-        'You must agree the terms and condition',
-        'danger'
-      );
-      return;
-    }
+    // if (!controls['agree'].value) {
+    //   // you must agree the terms and condition
+    //   // checkbox cannot work inside mat-form-field https://github.com/angular/material2/issues/7891
+    //   this.authNoticeService.setNotice(
+    //     'You must agree the terms and condition',
+    //     'danger'
+    //   );
+    //   return;
+    // }
 
-    const _user: User = new User();
-    _user.clear();
-    _user.email = controls['email'].value;
-    _user.username = controls['username'].value;
-    _user.fullname = controls['fullname'].value;
-    _user.password = controls['password'].value;
-    _user.roles = [];
+    const merchant: Merchant = new Merchant();
+    merchant.clear();
+    merchant.email = controls['email'].value;
+    merchant.name = controls['name'].value;
+    merchant.password = controls['password'].value;
     this.auth
-      .register(_user)
-      .then((user) => {
+      .register(merchant)
+      .then((merchant) => {
         this.loading = false;
-        console.log(user);
+        console.log(merchant);
         this.store.dispatch(
-          new Register({ authToken: user.accessToken })
+          new Register({ authToken: merchant.accessToken })
         );
         // pass notice message to the login page
         this.authNoticeService.setNotice(
