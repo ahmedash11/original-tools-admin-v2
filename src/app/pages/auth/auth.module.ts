@@ -19,7 +19,7 @@ import { InterceptService } from '../../core/_base/crud';
 // Module components
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from '../../merchants managment/merchants/merchant account/merchant account/register.component';
+import { RegisterComponent } from '../../merchants managment/merchant account/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
 // Auth

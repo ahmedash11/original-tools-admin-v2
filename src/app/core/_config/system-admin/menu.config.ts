@@ -126,7 +126,13 @@ export class MenuConfig {
               icon: 'fas fa-people-carry',
               bullet: 'line',
               page: '/auth/register'
-            }
+            },
+            {
+              title: 'Create Shop',
+              icon: 'fas fa-home',
+              bullet: 'line',
+              page: '/products/shops'
+            },
           ]
         }
       ]
