@@ -14,16 +14,16 @@ import { finalize, takeUntil, tap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 // NGRX
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../core/reducers';
+import { AppState } from '../../core/reducers';
 // Auth
 import {
   AuthNoticeService,
   AuthService,
   Register,
   Merchant
-} from '../../../../core/auth';
+} from '../../core/auth';
 import { Subject } from 'rxjs';
-import { ConfirmPasswordValidator } from './confirm-password.validator';
+import { ConfirmPasswordValidator } from '../confirm-password.validator';
 
 @Component({
   selector: 'kt-register',

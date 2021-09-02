@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams
+} from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -8,7 +12,8 @@ import { BehaviorSubject } from 'rxjs';
 export class CRUDService {
   public url: string = '/api/';
   public genericListFlagSubject = new BehaviorSubject(false);
-  public forceRefreshValue = this.genericListFlagSubject.asObservable();
+  public forceRefreshValue =
+    this.genericListFlagSubject.asObservable();
 
   constructor(private http: HttpClient) {}
   forwardForceRefresh(flag: boolean) {
@@ -68,14 +73,24 @@ export class CRUDService {
   }
 
   deleteOne(gate, dataid): Promise<any> {
+    const userToken = localStorage.getItem('x-access-token');
+    let header = new HttpHeaders().append(
+      'Authorization',
+      'Bearer ' + userToken
+    );
     let params = new HttpParams();
     let requestUrl = this.url + gate;
     return this.http
-      .delete(`${requestUrl}/${dataid}`, { params: params })
+      .delete(`${requestUrl}/${dataid}`, { headers: header })
       .toPromise();
   }
 
   deleteData(gate, query): Promise<any> {
+    const userToken = localStorage.getItem('x-access-token');
+    let header = new HttpHeaders().append(
+      'Authorization',
+      'Bearer ' + userToken
+    );
     let params = new HttpParams();
     let requestUrl = this.url + gate;
     query = {
@@ -85,25 +100,37 @@ export class CRUDService {
       params = params.set(index, query[index]);
     }
     return this.http
-      .delete(`${requestUrl}`, { params: params })
+      .delete(`${requestUrl}`, { headers: header })
       .toPromise();
   }
 
-  addData(gate, data, query = {}): Promise<any> {
+  addData(uri, data, query = {}): Promise<any> {
+    const userToken = localStorage.getItem('x-access-token');
+    let header = new HttpHeaders().append(
+      'Authorization',
+      'Bearer ' + userToken
+    );
     let params = new HttpParams();
-    let requestUrl = this.url + gate;
+    let requestUrl = this.url + uri;
     for (let index in query) {
       params = params.set(index, query[index]);
     }
     return this.http
-      .post(requestUrl, data, { params: params })
+      .post(requestUrl, data, { headers: header })
       .toPromise();
   }
 
   editData(gate, data, dataid): Promise<any> {
+    const userToken = localStorage.getItem('x-access-token');
+    let header = new HttpHeaders().append(
+      'Authorization',
+      'Bearer ' + userToken
+    );
     let requestUrl = this.url + gate;
     return this.http
-      .patch(`${requestUrl}/${dataid}`, data)
+      .patch(`${requestUrl}/${dataid}`, data, {
+        headers: header
+      })
       .toPromise();
   }
 
