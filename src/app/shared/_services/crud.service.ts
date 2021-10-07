@@ -21,6 +21,7 @@ export class CRUDService {
   }
 
   getData(gate, query): Promise<any> {
+    let params = new HttpParams();
     const userToken = localStorage.getItem('x-access-token');
     let header = new HttpHeaders().append(
       'Authorization',
@@ -30,20 +31,31 @@ export class CRUDService {
     query = {
       filter: JSON.stringify(query)
     };
-    return this.http.get(requestUrl, { headers: header }).toPromise();
+    for (let index in query) {
+      params = params.set(index, query[index]);
+    }
+    return this.http
+      .get(requestUrl, { headers: header, params: params })
+      .toPromise();
   }
 
   getCount(gate, query): Promise<any> {
+    let params = new HttpParams();
     const userToken = localStorage.getItem('x-access-token');
     let header = new HttpHeaders().append(
       'Authorization',
       'Bearer ' + userToken
     );
-    let requestUrl = this.url + gate ;
+    let requestUrl = this.url + gate;
+    for (let index in query) {
+      params = params.set(index, JSON.stringify(query[index]));
+    }
     delete query.skip;
     delete query.limit;
 
-    return this.http.get(requestUrl, { headers: header }).toPromise();
+    return this.http
+      .get(requestUrl, { headers: header, params: params })
+      .toPromise();
   }
 
   getOne(gate, ID, query = {}): Promise<any> {
