@@ -133,6 +133,11 @@ export class MenuConfig {
               bullet: 'line',
               page: '/products/shops'
             },
+            {
+              title: 'Shop Products',
+              icon: 'fas fa-toolbox',
+              page: '/products/shopproducts'
+            }
           ]
         }
       ]
