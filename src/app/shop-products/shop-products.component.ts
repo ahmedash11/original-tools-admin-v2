@@ -30,11 +30,6 @@ export class ShopsProductsComponent implements OnInit {
               required: true
             },
             {
-              name: 'Description',
-              type: 'string',
-              gate: 'metaTitle'
-            },
-            {
               name: 'Brand',
               type: 'select',
               gate: 'brandId',
