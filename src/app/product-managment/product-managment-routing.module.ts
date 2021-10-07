@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
 import { BrandsComponent } from './brands/brands.component';
@@ -10,6 +10,7 @@ import { SectionsComponent } from './sections/sections.component';
 import { SubcategoriesComponent } from './subcategories/subcategories.component';
 import { ToolbarComponent } from './toolbar/toolbars.component';
 import { ShopsComponent } from '../merchants managment/shops/shops.component';
+import { ShopsProductsComponent } from '../shop-products/shop-products.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: 'shops',
     component: ShopsComponent
   },
+  {
+    path: 'shopproducts',
+    component: ShopsProductsComponent
+  }
 ];
 
 @NgModule({

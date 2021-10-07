@@ -21,27 +21,29 @@ export class CRUDService {
   }
 
   getData(gate, query): Promise<any> {
-    let params = new HttpParams();
+    const userToken = localStorage.getItem('x-access-token');
+    let header = new HttpHeaders().append(
+      'Authorization',
+      'Bearer ' + userToken
+    );
     let requestUrl = this.url + gate;
     query = {
       filter: JSON.stringify(query)
     };
-    for (let index in query) {
-      params = params.set(index, query[index]);
-    }
-    return this.http.get(requestUrl, { params: params }).toPromise();
+    return this.http.get(requestUrl, { headers: header }).toPromise();
   }
 
   getCount(gate, query): Promise<any> {
-    let params = new HttpParams();
-    let requestUrl = this.url + gate + '/count';
+    const userToken = localStorage.getItem('x-access-token');
+    let header = new HttpHeaders().append(
+      'Authorization',
+      'Bearer ' + userToken
+    );
+    let requestUrl = this.url + gate ;
     delete query.skip;
     delete query.limit;
 
-    for (let index in query) {
-      params = params.set(index, JSON.stringify(query[index]));
-    }
-    return this.http.get(requestUrl, { params: params }).toPromise();
+    return this.http.get(requestUrl, { headers: header }).toPromise();
   }
 
   getOne(gate, ID, query = {}): Promise<any> {

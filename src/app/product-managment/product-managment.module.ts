@@ -14,6 +14,7 @@ import { SectionsComponent } from './sections/sections.component';
 import { SubcategoriesComponent } from './subcategories/subcategories.component';
 import { ToolbarComponent } from './toolbar/toolbars.component';
 import { ShopsComponent } from '../merchants managment/shops/shops.component';
+import { ShopsProductsComponent } from '../shop-products/shop-products.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ShopsComponent } from '../merchants managment/shops/shops.component';
     SectionsComponent,
     ToolbarComponent,
     ShopsComponent,
+    ShopsProductsComponent
   ],
   imports: [
     CommonModule,
