@@ -46,7 +46,7 @@ export class CRUDService {
       'Authorization',
       'Bearer ' + userToken
     );
-    let requestUrl = this.url + gate;
+    let requestUrl = this.url + gate + '/count';
     for (let index in query) {
       params = params.set(index, JSON.stringify(query[index]));
     }
