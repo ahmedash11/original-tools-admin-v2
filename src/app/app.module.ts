@@ -11,7 +11,10 @@ import {
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
-import { GestureConfig, MatRippleModule } from '@angular/material/core';
+import {
+  GestureConfig,
+  MatRippleModule
+} from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -94,12 +97,13 @@ import * as json from 'highlight.js/lib/languages/json';
 import { AuthInterceptor } from './services/auth.interceptor';
 
 // tslint:disable-next-line:class-name
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  wheelSpeed: 0.5,
-  swipeEasing: true,
-  minScrollbarLength: 40,
-  maxScrollbarLength: 300
-};
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface =
+  {
+    wheelSpeed: 0.5,
+    swipeEasing: true,
+    minScrollbarLength: 40,
+    maxScrollbarLength: 300
+  };
 
 export function initializeLayoutConfig(
   appConfig: LayoutConfigService
