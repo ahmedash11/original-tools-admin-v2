@@ -10,7 +10,8 @@ import { SectionsComponent } from './sections/sections.component';
 import { SubcategoriesComponent } from './subcategories/subcategories.component';
 import { ToolbarComponent } from './toolbar/toolbars.component';
 import { ShopsComponent } from '../merchants managment/shops/shops.component';
-import { ShopsProductsComponent } from '../shop-products/shop-products.component';
+import { ShopsProductsComponent } from './shop-products/shop-products.component';
+import { ShopProductsComponent } from '../merchants managment/products-shop/products-shop.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'shopproducts',
     component: ShopsProductsComponent
+  },
+  {
+    path: 'productshops',
+    component: ShopProductsComponent
   }
 ];
 

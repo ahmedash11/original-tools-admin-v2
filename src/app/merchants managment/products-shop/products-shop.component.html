@@ -1,0 +1,9 @@
+<kt-portlet>
+  <kt-generic-list
+    *ngIf="shopsProductModel"
+    [modelData]="shopsProductModel"
+    [query]="shopsQuery"
+    [title]="'shop products'"
+    [gate]="shopsProductsAPI"
+  ></kt-generic-list>
+</kt-portlet>

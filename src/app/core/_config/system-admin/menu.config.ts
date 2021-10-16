@@ -44,6 +44,11 @@ export class MenuConfig {
               page: '/products/list'
             },
             {
+              title: 'Your Products',
+              icon: 'fas fa-toolbox',
+              page: '/products/shopproducts'
+            },
+            {
               title: 'Brands',
               icon: 'fas fa-copyright',
               bullet: 'line',
@@ -134,9 +139,10 @@ export class MenuConfig {
               page: '/products/shops'
             },
             {
-              title: 'Shop Products',
-              icon: 'fas fa-toolbox',
-              page: '/products/shopproducts'
+              title: 'Add Shop-Products',
+              icon: 'fas fa-tools',
+              bullet: 'line',
+              page: '/products/productshops'
             }
           ]
         }
