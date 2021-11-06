@@ -73,13 +73,15 @@ export class DetailsComponent implements OnInit {
         ]
       })
       .then((res) => {
+        console.log(res);
         this.request = { ...res };
         this.status = this.request.status;
         this._crudService
-          .getRelation('orders', this.requestId, 'products')
+          .getRelation('orders', this.requestId, 'shops')
           .then((result) => {
             this.request.products = this.request.products.map(
               (product, index) => {
+                console.log(product, result);
                 return {
                   ...result[index],
                   ...product
@@ -101,8 +103,7 @@ export class DetailsComponent implements OnInit {
       .api(
         `/api/orders/${this.requestId}`,
         {
-          status: 'Completed',
-          delievryDate: new Date()
+          status: 'Completed'
         },
         'PATCH'
       )

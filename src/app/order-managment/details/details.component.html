@@ -1,8 +1,11 @@
 <div class="row flexbox-container" *ngIf="request">
-  <!-- Patient Details Card -->
+  <!-- Order Details Card -->
   <div class="col-md-6">
     <kt-portlet [class]="'full-height'">
-      <kt-portlet-header [title]="'Customer #' + request.customer.id">
+      <kt-portlet-header
+        *ngIf="request.customer.id"
+        [title]="'Customer #' + request.customer.id"
+      >
         <ng-container ktPortletTools>
           <button
             style="display: none"
@@ -17,7 +20,10 @@
         <div class="kt-widget4 maxH">
           <div class="kt-widget4__item ng-star-inserted">
             <div
-              class="kt-widget4__pic kt-widget4__pic--pic ng-star-inserted"
+              class="
+                kt-widget4__pic kt-widget4__pic--pic
+                ng-star-inserted
+              "
             >
               <img
                 class="patient_image"
@@ -26,21 +32,21 @@
               />
             </div>
             <div class="kt-widget4__info ng-star-inserted">
-              <div class="kt-widget4__title">
+              <div
+                *ngIf="request.customer.firstName"
+                class="kt-widget4__title"
+              >
                 {{
                   request.customer.firstName +
                     ' ' +
                     request.customer.lastName
                 }}
               </div>
-              <p class="kt-widget4__text ng-star-inserted">
-                <b>Mobile: </b>{{ request.customer.mobile }}
-              </p>
               <p
-                *ngIf="request.passportNumber"
+                *ngIf="request.customer.mobile"
                 class="kt-widget4__text ng-star-inserted"
               >
-                <b>Passport Number: </b> {{ request.passportNumber }}
+                <b>Mobile: </b>{{ request.customer.mobile }}
               </p>
             </div>
           </div>
@@ -83,11 +89,17 @@
                 <div class="kt-widget4__title">
                   <div class="d-flex justify-content-between">
                     <div>
-                      <h3 [className]="styles[status]">
+                      <h3
+                        *ngIf="request.id"
+                        [className]="styles[status]"
+                      >
                         Order #{{ request.id }}
                       </h3>
 
-                      <h4 [className]="styles[status]">
+                      <h4
+                        *ngIf="request.status"
+                        [className]="styles[status]"
+                      >
                         {{ request.status | titlecase }}
                       </h4>
                     </div>
@@ -142,7 +154,6 @@
       </kt-portlet-body>
     </kt-portlet>
   </div>
-  <!-- Payment Order Details Card -->
   <div class="col-md-3" *ngIf="request.total">
     <kt-portlet [class]="'full-height'">
       <kt-portlet-header [title]="'Payment Details'">
@@ -204,31 +215,53 @@
               style="width: 100%"
             >
               <div *ngFor="let item of request.products">
+                <div class="kt-widget4 maxH">
+                  <div class="kt-widget4__item ng-star-inserted">
+                    <div class="kt-widget4__info ng-star-inserted">
+                      <div>
+                        <div
+                          class="kt-widget4__title"
+                          [className]="styles[status]"
+                        >
+                          <h3>
+                            Shop Name #{{
+                              item.name || 'لا يوجد متجر'
+                            }}
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div
-                  class="kt-widget4__pic kt-widget4__pic--pic ng-star-inserted pull-right"
+                  class="
+                    kt-widget4__pic kt-widget4__pic--pic
+                    ng-star-inserted
+                    pull-right
+                  "
                 >
                   <img
                     class="patient_image"
-                    alt="user_image"
+                    alt="product_image"
                     [src]="item.img"
                   />
                 </div>
-                <div class="kt-widget4__title">
+                <div *ngIf="item.title" class="kt-widget4__title">
                   <h5>
                     {{ item.title | titlecase }}
                   </h5>
                 </div>
-                <p class="kt-widget4__text ng-star-inserted">
+                <p
+                  *ngIf="item.model"
+                  class="kt-widget4__text ng-star-inserted"
+                >
                   <b>Model: </b>{{ item.model }}
                 </p>
-                <p class="kt-widget4__text ng-star-inserted">
-                  <b>Brand: </b> {{ item.brand.title | titlecase }}
-                </p>
-                <p class="kt-widget4__text ng-star-inserted">
+                <p
+                  *ngIf="item.price"
+                  class="kt-widget4__text ng-star-inserted"
+                >
                   <b>Price: </b>{{ item.price + ' EGP' }}
-                </p>
-                <p class="kt-widget4__text ng-star-inserted">
-                  <b>Quantity: </b>{{ item.orderQuantity }}
                 </p>
               </div>
             </div>
