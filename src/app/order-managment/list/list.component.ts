@@ -10,12 +10,7 @@ export class ListComponent implements OnInit {
     order: ['id DESC'],
     where: {
       status: 'Pending'
-    },
-    include: [
-      {
-        relation: 'customer'
-      }
-    ]
+    }
   };
   public ordersAPI = 'orders';
   public title = 'orders';
@@ -30,21 +25,9 @@ export class ListComponent implements OnInit {
         searchKey: 'id'
       },
       {
-        display: 'Customer',
-        type: 'obj',
-        key: 'firstName',
-        objKey: 'customer'
-      },
-      {
-        display: 'Customer Mobile',
-        type: 'obj',
-        key: 'mobile',
-        objKey: 'customer'
-      },
-      {
         display: 'Order Date',
         type: 'date',
-        key: 'orderDate',
+        key: 'orderDate'
       },
       {
         display: 'Status',
@@ -91,9 +74,7 @@ export class ListComponent implements OnInit {
     //   }
     // ],
   };
-  constructor(
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

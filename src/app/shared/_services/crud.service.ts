@@ -191,13 +191,18 @@ export class CRUDService {
   }
 
   public uploadAttachment(gate: string, file: any, key = 'files') {
+    const userToken = localStorage.getItem('x-access-token');
+    let header = new HttpHeaders().append(
+      'Authorization',
+      'Bearer ' + userToken
+    );
     let requestUrl = this.url + gate;
     const input = new FormData();
     input.append(key, file, file.name);
 
     return this.http
       .post(`${requestUrl}/upload`, input, {
-        headers: {}
+        headers: header
       })
       .toPromise();
   }
